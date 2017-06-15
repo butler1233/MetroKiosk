@@ -1,0 +1,490 @@
+﻿<Window x:Class="MetroKioskWPF"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MetroKiosk"
+        mc:Ignorable="d"
+        Title="MetroKioskWPF" Height="813" Width="985">
+    <Window.Resources>
+        <Storyboard x:Key="WelcomeAnimatino">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="P_FrontPanel">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="P_FrontPanel">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="10">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="P_FrontPanel">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="10">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="P_MidPanel">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="P_MidPanel">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="5">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="P_MidPanel">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="10">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="P_BackPanel">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="P_BackPanel">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="8">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="P_BackPanel">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="8">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TextGrid">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.24" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.66" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="textBlock1">
+                <EasingThicknessKeyFrame KeyTime="0" Value="0,0,0,20"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:0.26" Value="0,0,0,-20">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseIn"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+            </ThicknessAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="textBlock1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.26" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="TextGrid">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.24" Value="153,17,0,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:0.66" Value="153,30,0,0">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseIn"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+            </ThicknessAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Starter">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.66" Value="30"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:0.92" Value="30,100,30,-70">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <QuarticEase EasingMode="EaseIn"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+            </ThicknessAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Starter">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.66" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.92" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuarticEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="ShopLogo">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.84" Value="-350,0,0,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:1.36" Value="10,0,0,0">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+            </ThicknessAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ShopLogo">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.84" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.36" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="HostFrame">
+                <EasingDoubleKeyFrame KeyTime="0:0:1.04" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.52" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="HostFrame">
+                <EasingThicknessKeyFrame KeyTime="0:0:1.04" Value="0,160,0,-80"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:1.52" Value="0,80,0,0">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+            </ThicknessAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="HostFrame">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.02">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Visible</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="0:0:1.04" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded"/>
+        <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown" SourceName="Starter">
+            <BeginStoryboard Storyboard="{StaticResource WelcomeAnimatino}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid x:Name="MagicBackgroundGrid">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0,0">
+                <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                        <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleX="1.5" ScaleY="1.5"/>
+                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                        <RotateTransform Angle="956.31" CenterY="0.5" CenterX="0.5"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </LinearGradientBrush.RelativeTransform>
+                <GradientStop Color="#FF008BFF" Offset="0.473"/>
+                <GradientStop Color="#FF043157"/>
+                <GradientStop Color="#FF5EA4E0" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Border x:Name="Starter" BorderBrush="#99FFFFFF" BorderThickness="1" CornerRadius="30" Margin="30" Background="#4CFFFFFF" ClipToBounds="True">
+            <Grid>
+                <Viewbox Margin="50,50,50,80">
+                    <Grid x:Name="StarterGrid">
+                        <Grid x:Name="VectorLogoGrid" HorizontalAlignment="Left" Height="126.941" VerticalAlignment="Top" Width="656.235">
+                            <Border x:Name="P_BackPanel" BorderThickness="1" HorizontalAlignment="Left" Height="78" Margin="7.334,7.333,0,0" VerticalAlignment="Top" Width="118.945" Background="#D72747B2" CornerRadius="5" RenderTransformOrigin="0.5,0.5">
+                                <Border.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Border.RenderTransform>
+                                <Border.LayoutTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform AngleX="-11"/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Border.LayoutTransform>
+                            </Border>
+                            <Border x:Name="P_MidPanel" BorderThickness="1" HorizontalAlignment="Left" Height="70" Margin="58.777,25.999,0,0" VerticalAlignment="Top" Width="86.76" Background="#9926BBD3" CornerRadius="5" RenderTransformOrigin="0.5,0.5">
+                                <Border.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Border.RenderTransform>
+                                <Border.LayoutTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform AngleX="-12"/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Border.LayoutTransform>
+                            </Border>
+                            <Border x:Name="P_FrontPanel" BorderThickness="1" HorizontalAlignment="Left" Height="76" Margin="28.109,44.667,0,0" VerticalAlignment="Top" Width="44.635" Background="#9974C4E2" CornerRadius="5" RenderTransformOrigin="0.5,0.5">
+                                <Border.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Border.RenderTransform>
+                                <Border.LayoutTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform AngleX="-13"/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Border.LayoutTransform>
+                            </Border>
+                            <Grid x:Name="TextGrid" HorizontalAlignment="Left" Height="77" Margin="153,17,0,0" VerticalAlignment="Top" Width="491">
+                                <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="3.799,-12,0,-6.767" Text="T" VerticalAlignment="Top" FontSize="72" RenderTransformOrigin="0.5,0.5" FontFamily="Segoe UI Semibold">
+                                    <TextBlock.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="1.11" ScaleY="1.11"/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.RenderTransform>
+                                    <TextBlock.LayoutTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform AngleX="-12"/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.LayoutTransform>
+                                </TextBlock>
+                                <TextBlock HorizontalAlignment="Left" Margin="43.799,-12,0,-6.767" Text="h" VerticalAlignment="Top" FontSize="72" RenderTransformOrigin="0.5,0.5" FontFamily="Segoe UI Semibold">
+                                    <TextBlock.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="1.11" ScaleY="1.11"/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.RenderTransform>
+                                    <TextBlock.LayoutTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform AngleX="-12"/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.LayoutTransform>
+                                </TextBlock>
+                                <TextBlock HorizontalAlignment="Left" Margin="81.799,-12,0,-6.767" Text="e" VerticalAlignment="Top" FontSize="72" RenderTransformOrigin="0.5,0.5" FontFamily="Segoe UI Semibold">
+                                    <TextBlock.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="1.11" ScaleY="1.11"/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.RenderTransform>
+                                    <TextBlock.LayoutTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform AngleX="-12"/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.LayoutTransform>
+                                </TextBlock>
+                                <TextBlock HorizontalAlignment="Left" Margin="133.799,-12,0,-6.767" Text="P" VerticalAlignment="Top" FontSize="72" RenderTransformOrigin="0.5,0.5" FontFamily="Segoe UI Semibold">
+                                    <TextBlock.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="1.11" ScaleY="1.11"/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.RenderTransform>
+                                    <TextBlock.LayoutTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform AngleX="-12"/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.LayoutTransform>
+                                </TextBlock>
+                                <TextBlock HorizontalAlignment="Left" Margin="173.799,-12,0,-6.767" Text="h" VerticalAlignment="Top" FontSize="72" RenderTransformOrigin="0.5,0.5" FontFamily="Segoe UI Semibold">
+                                    <TextBlock.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="1.11" ScaleY="1.11"/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.RenderTransform>
+                                    <TextBlock.LayoutTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform AngleX="-12"/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.LayoutTransform>
+                                </TextBlock>
+                                <TextBlock HorizontalAlignment="Left" Margin="213.799,-12,0,-6.767" Text="o" VerticalAlignment="Top" FontSize="72" RenderTransformOrigin="0.5,0.5" FontFamily="Segoe UI Semibold">
+                                    <TextBlock.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="1.11" ScaleY="1.11"/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.RenderTransform>
+                                    <TextBlock.LayoutTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform AngleX="-12"/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.LayoutTransform>
+                                </TextBlock>
+                                <TextBlock HorizontalAlignment="Left" Margin="249.799,-12,0,-6.767" Text="t" VerticalAlignment="Top" FontSize="72" RenderTransformOrigin="0.5,0.5" FontFamily="Segoe UI Semibold">
+                                    <TextBlock.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="1.11" ScaleY="1.11"/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.RenderTransform>
+                                    <TextBlock.LayoutTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform AngleX="-12"/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.LayoutTransform>
+                                </TextBlock>
+                                <TextBlock HorizontalAlignment="Left" Margin="272.799,-12,0,-6.767" Text="o" VerticalAlignment="Top" FontSize="72" RenderTransformOrigin="0.5,0.5" FontFamily="Segoe UI Semibold">
+                                    <TextBlock.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="1.11" ScaleY="1.11"/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.RenderTransform>
+                                    <TextBlock.LayoutTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform AngleX="-12"/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.LayoutTransform>
+                                </TextBlock>
+                                <TextBlock HorizontalAlignment="Left" Margin="326.799,-12,0,-6.767" Text="S" VerticalAlignment="Top" FontSize="72" RenderTransformOrigin="0.5,0.5" FontFamily="Segoe UI Semibold">
+                                    <TextBlock.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="1.11" ScaleY="1.11"/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.RenderTransform>
+                                    <TextBlock.LayoutTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform AngleX="-12"/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.LayoutTransform>
+                                </TextBlock>
+                                <TextBlock HorizontalAlignment="Left" Margin="363.799,-12,0,-6.767" Text="h" VerticalAlignment="Top" FontSize="72" RenderTransformOrigin="0.5,0.5" FontFamily="Segoe UI Semibold">
+                                    <TextBlock.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="1.11" ScaleY="1.11"/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.RenderTransform>
+                                    <TextBlock.LayoutTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform AngleX="-12"/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.LayoutTransform>
+                                </TextBlock>
+                                <TextBlock HorizontalAlignment="Left" Margin="402.799,-12,0,-6.767" Text="o" VerticalAlignment="Top" FontSize="72" RenderTransformOrigin="0.5,0.5" FontFamily="Segoe UI Semibold">
+                                    <TextBlock.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="1.11" ScaleY="1.11"/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.RenderTransform>
+                                    <TextBlock.LayoutTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform AngleX="-12"/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.LayoutTransform>
+                                </TextBlock>
+                                <TextBlock HorizontalAlignment="Left" Margin="441.799,-12,-34.894,-6.767" Text="p" VerticalAlignment="Top" FontSize="72" RenderTransformOrigin="0.5,0.5" FontFamily="Segoe UI Semibold">
+                                    <TextBlock.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="1.11" ScaleY="1.11"/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.RenderTransform>
+                                    <TextBlock.LayoutTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform AngleX="-12"/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.LayoutTransform>
+                                </TextBlock>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Viewbox>
+                <TextBlock x:Name="textBlock1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Press here to begin" VerticalAlignment="Bottom" Foreground="White" Margin="0,0,0,20" FontSize="36" FontFamily="Segoe UI Light">
+                    <TextBlock.Effect>
+                        <DropShadowEffect ShadowDepth="0"/>
+                    </TextBlock.Effect>
+                </TextBlock>
+            </Grid>
+        </Border>
+        <Frame x:Name="HostFrame" Content="Frame" Margin="0,80,0,0" Background="White" Opacity="0" Visibility="Collapsed" NavigationUIVisibility="Hidden"/>
+        <Image x:Name="ShopLogo" HorizontalAlignment="Left" Height="80" Margin="10,0,0,0" VerticalAlignment="Top" Source="pack://siteoforigin:,,,/Resources/ReceiptKioskLogo.png" Opacity="0">
+            <Image.Effect>
+                <DropShadowEffect ShadowDepth="0" Opacity="0.7"/>
+            </Image.Effect>
+        </Image>
+
+    </Grid>
+</Window>

@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <RootNamespace>WPF_MK_Windows</RootNamespace>
+    <AssemblyName>WPF_MK_Windows</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MyType>Custom</MyType>
+    <ProjectGuid>{02085C8C-1603-4C6E-8675-D339DB0235F5}</ProjectGuid>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <IncrementalBuild>true</IncrementalBuild>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>WPF_MK_Windows.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <IncrementalBuild>false</IncrementalBuild>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>WPF_MK_Windows.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Pre2017Edition\MetroKiosk_2_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MK_2017\MK2017Edition.xaml.vb">
+      <DependentUpon>MK2017Edition.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pre2017Edition\KioskControl.xaml.vb">
+      <DependentUpon>KioskControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pre2017Edition\WPFAlert.xaml.vb">
+      <DependentUpon>WPFAlert.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pre2017Edition\WPFInvoker.xaml.vb">
+      <DependentUpon>WPFInvoker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pre2017Edition\WPFProcesstoFinish.xaml.vb">
+      <DependentUpon>WPFProcesstoFinish.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pre2017Edition\WPFTools.vb" />
+    <Compile Include="Pre2017Edition\WPFWelcome.xaml.vb">
+      <DependentUpon>WPFWelcome.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MK_2017\MK2017Edition.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pre2017Edition\KioskControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pre2017Edition\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pre2017Edition\WPFAlert.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pre2017Edition\WPFInvoker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pre2017Edition\WPFProcesstoFinish.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pre2017Edition\WPFWelcome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="System.Linq" />
+    <Import Include="System.Threading.Tasks" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows" />
+    <Import Include="System.Windows.Controls" />
+    <Import Include="System.Windows.Data" />
+    <Import Include="System.Windows.Documents" />
+    <Import Include="System.Windows.Input" />
+    <Import Include="System.Windows.Shapes" />
+    <Import Include="System.Windows.Media" />
+    <Import Include="System.Windows.Media.Imaging" />
+    <Import Include="System.Windows.Navigation" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="My Project\AssemblyInfo.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <None Include="Pre2017Edition\MetroKiosk_2_TemporaryKey.pfx" />
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <AppDesigner Include="My Project\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pre2017Edition\Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MetroKioskResources\MetroKioskResources.vbproj">
+      <Project>{33977083-5225-4e59-bc1f-92b4120b94a7}</Project>
+      <Name>MetroKioskResources</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\bluetooth.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\cd.png" />
+    <Resource Include="Resources\CF.png" />
+    <Resource Include="Resources\crop.png" />
+    <Resource Include="Resources\cropmask.png" />
+    <Resource Include="Resources\crop_br.png" />
+    <Resource Include="Resources\crop_tl.png" />
+    <Resource Include="Resources\darklay.png" />
+    <Resource Include="Resources\editbg.png" />
+    <Resource Include="Resources\greyscale.png" />
+    <Resource Include="Resources\Image1.bmp" />
+    <Resource Include="Resources\iphone.png" />
+    <Resource Include="Resources\Kiosklogo.png" />
+    <Resource Include="Resources\loadingtheps.png" />
+    <Resource Include="Resources\nomoreimg.png" />
+    <Resource Include="Resources\noread.png" />
+    <Resource Include="Resources\pleasewaitwin.png" />
+    <Resource Include="Resources\reset.png" />
+    <Resource Include="Resources\resetdisable.png" />
+    <Resource Include="Resources\rotleft.png" />
+    <Resource Include="Resources\rotright.png" />
+    <Resource Include="Resources\SD.png" />
+    <Resource Include="Resources\searching.png" />
+    <Resource Include="Resources\Sepia.png" />
+    <Resource Include="Resources\tick.png" />
+    <Resource Include="Resources\tick1.png" />
+    <Resource Include="Resources\undo.png" />
+    <Resource Include="Resources\undodisable.png" />
+    <Resource Include="Resources\Untitled-3.png" />
+    <Resource Include="Resources\usbdrive.png" />
+    <Resource Include="Resources\XD.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+</Project>

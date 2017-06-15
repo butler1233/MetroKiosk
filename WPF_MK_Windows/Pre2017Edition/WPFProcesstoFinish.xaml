@@ -1,0 +1,32 @@
+﻿<Window x:Class="WPFProcesstoFinish"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="WPFWelcome" Height="768" WindowStyle="None" Width="1024" ResizeMode="NoResize" Loaded="Window_Loaded" Left="0" Top="0" WindowState="Maximized" Topmost="True">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="519*"/>
+            <ColumnDefinition Width="193*"/>
+            <ColumnDefinition Width="312*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="87"/>
+            <RowDefinition Height="1"/>
+            <RowDefinition Height="92*"/>
+            <RowDefinition Height="1"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="LogoDad" HorizontalAlignment="Left" Grid.Row="1" Height="77" VerticalAlignment="Top" Width="300" Margin="5,5,0,0" MouseDoubleClick="StaffMode" Background="{x:Null}" BorderThickness="0">
+            <Image x:Name="PSLogo" HorizontalAlignment="Left" Width="300"/>
+        </Button>
+        <Rectangle Fill="#FF6495ED" Grid.Row="0" Stroke="Black" StrokeThickness="0" Grid.ColumnSpan="3"/>
+        <Rectangle Fill="#FFD1D1D1" Grid.Row="2" Stroke="Black" StrokeThickness="0" Grid.ColumnSpan="3"/>
+        <Grid x:Name="MainGrid" Background="#FFFFFFFF" Grid.Row="3" Grid.ColumnSpan="3">
+            <Rectangle x:Name="GridBG" Fill="#FFFFFFFF" Stroke="Black" StrokeThickness="0"/>
+            <Label x:Name="MainLabel"  Content="We're just finishing up." Margin="10,228,10,271" VerticalAlignment="Center" Height="105" FontSize="64" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="ExtraLight"/>
+            <Label x:Name="SubLabel" Content="This will take a few minutes, depending on your files" Margin="10,0,10,50" VerticalAlignment="Bottom" FontSize="20" HorizontalContentAlignment="Center"/>
+        </Grid>
+        <Rectangle Fill="#FF6495ED" Grid.Row="4" Stroke="Black" StrokeThickness="0" Grid.ColumnSpan="3"/>
+    </Grid>
+</Window>
+
