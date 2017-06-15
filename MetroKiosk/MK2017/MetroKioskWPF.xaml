@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MetroKiosk"
         mc:Ignorable="d"
-        Title="MetroKioskWPF" Height="813" Width="985">
+        Title="MetroKioskWPF" Height="813" Width="985" WindowState="Maximized">
     <Window.Resources>
         <Storyboard x:Key="WelcomeAnimatino">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="P_FrontPanel">

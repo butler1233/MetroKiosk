@@ -121,15 +121,11 @@ Public Class main
     End Function
     Private Sub main_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        If My.Settings.DebugMode = True Then
-            Dim wpfWelcome As New WPF_MK_Windows.WPFWelcome
-            wpfWelcome.Show()
-        ElseIf My.Settings.Use2K17 Then
+        If My.Settings.Use2K17 Then
             '_2017_Welcome.Show()
 
-            Dim MK2017 As New WPF_MK_Windows.MK2017Edition
-            MK2017.SettingsWindow = Me
-            MK2017.SetupWindow(My.Settings.StorageCF, My.Settings.StorageCD, My.Settings.StorageiDevice, My.Settings.StorageSD, My.Settings.StorageXD, "C:\b")
+            Dim MK2017 As New MetroKioskWPF
+            MK2017.Show()
         Else
             kioskWelcome.Show()
         End If

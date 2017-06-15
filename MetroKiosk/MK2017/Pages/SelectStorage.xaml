@@ -121,9 +121,42 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
+        <Storyboard x:Key="AnimatePageOut">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="NextButtonGrid">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-200">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="DeviceInfoGrid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-200">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="NextButtonGrid">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="DeviceInfoGrid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
     </Page.Resources>
     <Page.Triggers>
         <EventTrigger RoutedEvent="FrameworkElement.Loaded"/>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="NextButton">
+            <BeginStoryboard x:Name="AnimatePageOut_BeginStoryboard" Storyboard="{StaticResource AnimatePageOut}"/>
+        </EventTrigger>
     </Page.Triggers>
     <Page.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -138,7 +171,15 @@
             </Grid>
         </Viewbox>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Margin="10,30,0,0" TextWrapping="Wrap" Text="Please connect your storage device" VerticalAlignment="Top" FontSize="36" FontFamily="Segoe UI Semilight"/>
-        <Border x:Name="DeviceInfoGrid"  HorizontalAlignment="Center" Height="206.725" Margin="0,80,0,0" VerticalAlignment="Center" Width="582.245" BorderThickness="1" BorderBrush="#FF192F46" Opacity="0">
+        <Border x:Name="DeviceInfoGrid"  HorizontalAlignment="Center" Height="206.725" Margin="0,80,0,0" VerticalAlignment="Center" Width="582.245" BorderThickness="1" BorderBrush="#FF192F46" Opacity="0" RenderTransformOrigin="0.5,0.5">
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Border.RenderTransform>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="71*"/>
@@ -185,7 +226,15 @@
                 <Image x:Name="DevcieTypeImage" Source="pack://siteoforigin:,,,/Resources/SD.png"/>
             </Grid>
         </Border>
-        <Grid x:Name="NextButtonGrid" HorizontalAlignment="Center" VerticalAlignment="Center" Width="582" Margin="0,80,0,0" Height="206.725" Opacity="0">
+        <Grid x:Name="NextButtonGrid" HorizontalAlignment="Center" VerticalAlignment="Center" Width="582" Margin="0,80,0,0" Height="206.725" Opacity="0" RenderTransformOrigin="0.5,0.5">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
             <Button x:Name="NextButton" HorizontalAlignment="Right" Height="206.725" VerticalAlignment="Top" Width="141.294" BorderBrush="{x:Null}" Background="#66FFFFFF" Margin="-41.294,0,0,-106.725">
                 <Grid HorizontalAlignment="Left" Height="168.276" VerticalAlignment="Top">
                     <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0" FontSize="72" RenderTransformOrigin="0.5,0.5">
