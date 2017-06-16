@@ -2,8 +2,9 @@
 
     Private Sub kioskWelcome_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         setting.sendlog("Kiosk loaded successfully.")
-        screensavepanel.Show()
         Me.WindowState = FormWindowState.Maximized
+        screensavepanel.Show()
+
     End Sub
 
     Private Sub Logo_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Logo.DoubleClick

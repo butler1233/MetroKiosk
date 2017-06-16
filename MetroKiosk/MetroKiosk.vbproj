@@ -8,7 +8,7 @@
     <ProjectGuid>{BA066E95-F4F4-4740-BBFF-C210FCA1C348}</ProjectGuid>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
     <OutputType>WinExe</OutputType>
-    <StartupObject>MetroKiosk.My.MyApplication</StartupObject>
+    <StartupObject>MetroKiosk.main</StartupObject>
     <RootNamespace>MetroKiosk</RootNamespace>
     <AssemblyName>ThePSKiosk</AssemblyName>
     <FileAlignment>512</FileAlignment>
@@ -85,6 +85,9 @@
     <AssemblyOriginatorKeyFile>MetroKiosk_2_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
@@ -96,6 +99,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Speech" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
@@ -129,8 +133,14 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application.xaml.vb">
+      <DependentUpon>Application.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MK2017\MetroKioskWPF.xaml.vb">
       <DependentUpon>MetroKioskWPF.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MK2017\Pages\SelectFolder.xaml.vb">
+      <DependentUpon>SelectFolder.xaml</DependentUpon>
     </Compile>
     <Compile Include="MK2017\Pages\SelectStorage.xaml.vb">
       <DependentUpon>SelectStorage.xaml</DependentUpon>
@@ -514,7 +524,15 @@
     <Resource Include="Resources\ReceiptKioskLogo.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Application.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
     <Page Include="MK2017\MetroKioskWPF.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MK2017\Pages\SelectFolder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -541,6 +559,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Service_10_12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\SpeakOff.png" />
+    <Resource Include="Resources\SpeakOn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MK2017\Controls\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

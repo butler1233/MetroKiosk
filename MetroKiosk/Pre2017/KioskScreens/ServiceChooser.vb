@@ -49,11 +49,6 @@ Public Class ServiceChooser
         'Me.Size = New Size(kioskWelcome.Width, kioskWelcome.Height - 164)
         Dim ScaleFactors As New SizeF(kioskWelcome.Width / 1024, (kioskWelcome.Height - 164) / 604)
         Me.Scale(ScaleFactors)
-        size1.ImageLocation = My.Settings.Size1Img
-        size2.ImageLocation = My.Settings.Size2Img
-        size3.ImageLocation = My.Settings.Size3Img
-        size4.ImageLocation = My.Settings.Size4Img
-        size5.ImageLocation = My.Settings.Size5Img
         sendnetcommand("STATE#Waiting for size choice")
 
     End Sub

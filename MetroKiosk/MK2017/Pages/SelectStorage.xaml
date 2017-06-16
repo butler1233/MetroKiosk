@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:MetroKiosk"
       mc:Ignorable="d" 
       d:DesignHeight="475.089" d:DesignWidth="910.676"
-      Title="SelectStorage" Loaded="Page_Loaded">
+      Title="Insert your storage device" Loaded="Page_Loaded">
     <Page.Resources>
         <Storyboard x:Key="TransitionToFoundCard">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="DeviceInfoGrid">
@@ -170,7 +170,7 @@
                 <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="[animation]" VerticalAlignment="Center" FontSize="72" Foreground="#7F0E0E0E"/>
             </Grid>
         </Viewbox>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Margin="10,30,0,0" TextWrapping="Wrap" Text="Please connect your storage device" VerticalAlignment="Top" FontSize="36" FontFamily="Segoe UI Semilight"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Margin="10,30,0,0" TextWrapping="Wrap" Text="Please connect your storage media" VerticalAlignment="Top" FontSize="36" FontFamily="Segoe UI Semilight"/>
         <Border x:Name="DeviceInfoGrid"  HorizontalAlignment="Center" Height="206.725" Margin="0,80,0,0" VerticalAlignment="Center" Width="582.245" BorderThickness="1" BorderBrush="#FF192F46" Opacity="0" RenderTransformOrigin="0.5,0.5">
             <Border.RenderTransform>
                 <TransformGroup>

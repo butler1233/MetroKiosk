@@ -28,6 +28,7 @@ Class SelectStorage
 
     Private Sub Page_Loaded(sender As Object, e As Windows.RoutedEventArgs)
         _Disp = Me.Dispatcher
+        _Main.Speak("Please plug in your storage media.")
 
         'Start the threda
         Dim ts As New ThreadStart(AddressOf ProcessingThread)
@@ -36,6 +37,7 @@ Class SelectStorage
     End Sub
 
     Private Sub TriggerTransition(DriveName As String, DriveType As String)
+        _Main.Speak("Thanks!")
         DeviceNameTB.Text = DriveName
         DeviceTypeTB.Text = DriveType
         'trigger the anim
@@ -44,7 +46,8 @@ Class SelectStorage
 
     End Sub
     Private Sub ReadyToNext(FilesFound As String)
-        ScanningforimagesTB.Text = FilesFound + " Images Found"
+        _Main.Speak("We found " + FilesFound + " pictures on your media. You can press next to continue..")
+        ScanningforimagesTB.Text = FilesFound + " Pictures Found"
         ScanningPB.Visibility = Windows.Visibility.Collapsed
         'trigger the anim
         Dim sb As Storyboard = Me.FindResource("ShowNextButton")
@@ -115,4 +118,16 @@ Class SelectStorage
 
     End Sub
 
+    Private Sub NextButton_Click(sender As Object, e As Windows.RoutedEventArgs) Handles NextButton.Click
+        Dim Hold As New Thread(Sub()
+                                   Thread.Sleep(420)
+                                   _Disp.Invoke(Sub() LoadFolderChooser())
+                               End Sub)
+        Hold.Start()
+    End Sub
+
+    Private Sub LoadFolderChooser()
+        Dim Folders As New SelectFolder(_Main, files, DiskType, DiskFolder)
+        _Main.PushPage(Folders)
+    End Sub
 End Class

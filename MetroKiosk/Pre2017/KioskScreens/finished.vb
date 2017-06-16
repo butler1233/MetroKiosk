@@ -8,6 +8,6 @@
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         sendlog("Kiosk reloading now...")
-        Application.Restart()
+        System.Windows.Forms.Application.Restart()
     End Sub
 End Class

@@ -72,10 +72,12 @@ Partial Class ServiceChooser
         Me.size1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.size1.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.size1.BackColor = System.Drawing.Color.CornflowerBlue
+        Me.size1.Image = Global.MetroKiosk.My.Resources.Resources.Service_6_4
         Me.size1.Location = New System.Drawing.Point(2, 2)
         Me.size1.Name = "size1"
         Me.size1.Size = New System.Drawing.Size(200, 250)
+        Me.size1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.size1.TabIndex = 4
         Me.size1.TabStop = False
         '
@@ -95,10 +97,12 @@ Partial Class ServiceChooser
         Me.size2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.size2.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.size2.BackColor = System.Drawing.Color.CornflowerBlue
+        Me.size2.Image = Global.MetroKiosk.My.Resources.Resources.Service_7_5
         Me.size2.Location = New System.Drawing.Point(2, 2)
         Me.size2.Name = "size2"
         Me.size2.Size = New System.Drawing.Size(200, 250)
+        Me.size2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.size2.TabIndex = 5
         Me.size2.TabStop = False
         '
@@ -118,10 +122,12 @@ Partial Class ServiceChooser
         Me.size3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.size3.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.size3.BackColor = System.Drawing.Color.CornflowerBlue
+        Me.size3.Image = Global.MetroKiosk.My.Resources.Resources.Service_8_6
         Me.size3.Location = New System.Drawing.Point(2, 2)
         Me.size3.Name = "size3"
         Me.size3.Size = New System.Drawing.Size(200, 250)
+        Me.size3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.size3.TabIndex = 5
         Me.size3.TabStop = False
         '
@@ -141,10 +147,12 @@ Partial Class ServiceChooser
         Me.size4.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.size4.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.size4.BackColor = System.Drawing.Color.CornflowerBlue
+        Me.size4.Image = Global.MetroKiosk.My.Resources.Resources.Service_8_10
         Me.size4.Location = New System.Drawing.Point(2, 2)
         Me.size4.Name = "size4"
         Me.size4.Size = New System.Drawing.Size(200, 250)
+        Me.size4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.size4.TabIndex = 5
         Me.size4.TabStop = False
         '
@@ -174,10 +182,12 @@ Partial Class ServiceChooser
         Me.size5.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.size5.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.size5.BackColor = System.Drawing.Color.CornflowerBlue
+        Me.size5.Image = Global.MetroKiosk.My.Resources.Resources.Service_10_12
         Me.size5.Location = New System.Drawing.Point(2, 2)
         Me.size5.Name = "size5"
         Me.size5.Size = New System.Drawing.Size(200, 250)
+        Me.size5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.size5.TabIndex = 5
         Me.size5.TabStop = False
         '

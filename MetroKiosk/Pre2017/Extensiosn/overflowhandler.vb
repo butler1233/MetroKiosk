@@ -184,6 +184,6 @@
     End Sub
 
     Private Sub debugtext_DoubleClick(sender As Object, e As EventArgs) Handles debugtext.DoubleClick
-        Application.Exit()
+        System.Windows.Forms.Application.Exit()
     End Sub
 End Class
