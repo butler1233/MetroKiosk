@@ -3,53 +3,6 @@
 ''' <summary>
 ''' WELCOME TO 2016 BOYS. July 29th that is. 
 ''' </summary>
-Public Module GDIReceipt
-    Public Class OrderedService
-        Public SizeCT As String
-        Public SizeText As String
-        Public Quantity As Integer
-        Public UnitPrice As Single
-        Public Total As Single
-    End Class
-
-    Public Class ReceiptData
-        Public KioskName As String
-        Public OrderName As String
-        Public OrderTime As DateTime
-
-        Public Services As New List(Of OrderedService)
-
-        Public ReadOnly Property TotalPrice() As Single
-            Get
-                Dim value As Single = 0
-                For Each os As OrderedService In Services
-                    value += os.UnitPrice * os.Quantity
-                Next
-                Return value
-            End Get
-        End Property
-
-        Private Sub GDIPrint(sender As FancyPrinter, e As PrintPageEventArgs)
-            Dim d As ReceiptData = sender.PrintData
-            e.Graphics.PageUnit = GraphicsUnit.Millimeter
-
-
-        End Sub
-
-        Public Class FancyPrinter
-            Inherits PrintDocument
-            Public PrintData As ReceiptData
-        End Class
-
-        Private Sub PrintReceipt(ReceiptData As ReceiptData)
-            Dim printer As New FancyPrinter
-            printer.PrintController = New StandardPrintController
-            AddHandler printer.PrintPage, AddressOf GDIPrint
-            printer.PrintData = ReceiptData
-            printer.Print()
-        End Sub
-    End Class
-End Module
 
 Public Class receipt
 
@@ -152,3 +105,50 @@ Public Class receipt
 
     End Sub
 End Class
+Public Module GDIReceipt
+    Public Class OrderedService
+        Public SizeCT As String
+        Public SizeText As String
+        Public Quantity As Integer
+        Public UnitPrice As Single
+        Public Total As Single
+    End Class
+
+    Public Class ReceiptData
+        Public KioskName As String
+        Public OrderName As String
+        Public OrderTime As DateTime
+
+        Public Services As New List(Of OrderedService)
+
+        Public ReadOnly Property TotalPrice() As Single
+            Get
+                Dim value As Single = 0
+                For Each os As OrderedService In Services
+                    value += os.UnitPrice * os.Quantity
+                Next
+                Return value
+            End Get
+        End Property
+
+        Private Sub GDIPrint(sender As FancyPrinter, e As PrintPageEventArgs)
+            Dim d As ReceiptData = sender.PrintData
+            e.Graphics.PageUnit = GraphicsUnit.Millimeter
+
+
+        End Sub
+
+        Public Class FancyPrinter
+            Inherits PrintDocument
+            Public PrintData As ReceiptData
+        End Class
+
+        Private Sub PrintReceipt(ReceiptData As ReceiptData)
+            Dim printer As New FancyPrinter
+            printer.PrintController = New StandardPrintController
+            AddHandler printer.PrintPage, AddressOf GDIPrint
+            printer.PrintData = ReceiptData
+            printer.Print()
+        End Sub
+    End Class
+End Module

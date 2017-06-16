@@ -1,0 +1,378 @@
+﻿<Page x:Name="Keyboard" x:Class="NameEntry"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MetroKiosk"
+      mc:Ignorable="d" 
+      d:DesignHeight="475.089" d:DesignWidth="910.676"
+      Title="Enter your name" >
+    <Page.Resources>
+        <ControlTemplate x:Key="NamedKey" TargetType="{x:Type Button}">
+            <Border Grid.ColumnSpan="2" Margin="1"  x:Name="border" BorderBrush="#FF295595" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True" Background="#FF4A80CF">
+                <TextBlock x:Name="contentPresenter" Text="{TemplateBinding Content}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Foreground="White" FontFamily="Segoe UI Semilight" FontSize="36" Margin="2"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsDefaulted" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#FF3767AC"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FF28579B"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" TargetName="border" Value="#FFF4F4F4"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FFADB2B5"/>
+                    <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="#FF838383"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <Storyboard x:Key="Entry">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="NameBox">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.36" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="NameBox">
+                <EasingThicknessKeyFrame KeyTime="0" Value="130,30,-70,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:0.36" Value="30,30,30,0">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+            </ThicknessAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.12" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.44" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.18" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button2">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.24" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.56" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button3">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.28" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button4">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.32" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.64" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button5">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.36" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.68" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button6">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.72" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button7">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.44" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.76" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button8">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.48" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button9">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.52" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.84" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button10">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.42" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.74" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button11">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.46" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.78" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button12">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.82" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button13">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.54" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.86" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button14">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.58" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button15">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.62" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.94" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button16">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.66" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.98" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button17">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.02" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button18">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.74" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.06" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button19">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.62" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.94" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button20">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.66" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.98" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button21">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.02" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button22">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.74" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.06" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button23">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.78" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button24">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.82" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.14" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button25">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.86" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.18" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button26">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.22" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button27">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.12" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Page.Resources>
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource Entry}"/>
+        </EventTrigger>
+    </Page.Triggers>
+    <Page.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFB0DFFF" Offset="0"/>
+            <GradientStop Color="#FFB5C0FF" Offset="1"/>
+        </LinearGradientBrush>
+    </Page.Background>
+    <Viewbox>
+    <Grid>
+        <TextBox x:Name="NameBox" Margin="30,30,30,0" TextWrapping="Wrap" VerticalAlignment="Top" Padding="8" FontFamily="Arial" FontSize="72" HorizontalContentAlignment="Center" SelectionOpacity="0"/>
+        <Grid Margin="30,135.793,30,30">
+            <Grid Height="300" Width="850" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Button x:Name="button" Content="Q" Template="{DynamicResource NamedKey}" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5"/>
+                <Button x:Name="button1" Content="W" Grid.ColumnSpan="2" Grid.Column="2" Template="{DynamicResource NamedKey}" RenderTransformOrigin="0.5,0.5"/>
+                <Button x:Name="button2" Content="E" Grid.ColumnSpan="2" Grid.Column="4" Template="{DynamicResource NamedKey}" RenderTransformOrigin="0.5,0.5"/>
+                <Button x:Name="button3" Content="R" Grid.ColumnSpan="2" Grid.Column="6" Template="{DynamicResource NamedKey}" RenderTransformOrigin="0.5,0.5"/>
+                <Button x:Name="button4" Content="T" Grid.ColumnSpan="2" Grid.Column="8" Template="{DynamicResource NamedKey}" RenderTransformOrigin="0.5,0.5"/>
+                <Button x:Name="button5" Content="Y" Grid.ColumnSpan="2" Grid.Column="10" Template="{DynamicResource NamedKey}" RenderTransformOrigin="0.5,0.5"/>
+                <Button x:Name="button6" Content="U" Grid.ColumnSpan="2" Grid.Column="12" Template="{DynamicResource NamedKey}" RenderTransformOrigin="0.5,0.5"/>
+                <Button x:Name="button7" Content="I" Grid.ColumnSpan="2" Grid.Column="14" Template="{DynamicResource NamedKey}" RenderTransformOrigin="0.5,0.5"/>
+                <Button x:Name="button8" Content="O" Grid.ColumnSpan="2" Grid.Column="16" Template="{DynamicResource NamedKey}" RenderTransformOrigin="0.5,0.5"/>
+                <Button x:Name="button9" Content="P" Grid.Column="18" Template="{DynamicResource NamedKey}" Margin="0,0,-44.737,0" RenderTransformOrigin="0.5,0.5"/>
+                <Button x:Name="button10" Content="A" Template="{DynamicResource NamedKey}" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
+                <Button x:Name="button11" Content="S" Grid.ColumnSpan="2" Grid.Column="3" Template="{DynamicResource NamedKey}" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
+                <Button x:Name="button12" Content="D" Grid.ColumnSpan="2" Grid.Column="5" Template="{DynamicResource NamedKey}" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
+                <Button x:Name="button13" Content="F" Grid.ColumnSpan="2" Grid.Column="7" Template="{DynamicResource NamedKey}" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
+                <Button x:Name="button14" Content="G" Grid.ColumnSpan="2" Grid.Column="9" Template="{DynamicResource NamedKey}" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
+                <Button x:Name="button15" Content="H" Grid.ColumnSpan="2" Grid.Column="11" Template="{DynamicResource NamedKey}" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
+                <Button x:Name="button16" Content="J" Grid.ColumnSpan="2" Grid.Column="13" Template="{DynamicResource NamedKey}" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
+                <Button x:Name="button17" Content="K" Grid.ColumnSpan="2" Grid.Column="15" Template="{DynamicResource NamedKey}" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
+                <Button x:Name="button18" Content="L" Grid.ColumnSpan="2" Grid.Column="17" Template="{DynamicResource NamedKey}" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
+                <Button x:Name="button19" Content="Z" Template="{DynamicResource NamedKey}" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="2" RenderTransformOrigin="0.5,0.5"/>
+                <Button x:Name="button20" Content="X" Grid.ColumnSpan="2" Grid.Column="4" Template="{DynamicResource NamedKey}" Grid.Row="2" RenderTransformOrigin="0.5,0.5"/>
+                <Button x:Name="button21" Content="C" Grid.ColumnSpan="2" Grid.Column="6" Template="{DynamicResource NamedKey}" Grid.Row="2" RenderTransformOrigin="0.5,0.5"/>
+                <Button x:Name="button22" Content="V" Grid.ColumnSpan="2" Grid.Column="8" Template="{DynamicResource NamedKey}" Grid.Row="2" RenderTransformOrigin="0.5,0.5"/>
+                <Button x:Name="button23" Content="B" Grid.ColumnSpan="2" Grid.Column="10" Template="{DynamicResource NamedKey}" Grid.Row="2" RenderTransformOrigin="0.5,0.5"/>
+                <Button x:Name="button24" Content="N" Grid.ColumnSpan="2" Grid.Column="12" Template="{DynamicResource NamedKey}" Grid.Row="2" RenderTransformOrigin="0.5,0.5"/>
+                <Button x:Name="button25" Content="M" Grid.ColumnSpan="2" Grid.Column="14" Template="{DynamicResource NamedKey}" Grid.Row="2" RenderTransformOrigin="0.5,0.5"/>
+                <Button x:Name="button26" Content="-" Grid.ColumnSpan="2" Grid.Column="16" Template="{DynamicResource NamedKey}" Grid.Row="2" RenderTransformOrigin="0.5,0.5" Click="Press"/>
+                <Button x:Name="button27" Content="Space" Grid.ColumnSpan="10" Grid.Column="5" Template="{DynamicResource NamedKey}" Grid.Row="3" RenderTransformOrigin="0.5,0.5" Click="Button_Click"/>
+            </Grid>
+        </Grid>
+
+    </Grid>
+    </Viewbox>
+</Page>

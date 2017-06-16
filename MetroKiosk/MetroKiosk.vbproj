@@ -30,7 +30,7 @@
     <OldToolsVersion>3.5</OldToolsVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
-    <PublishUrl>C:\Users\Lee\OneDrive\Websites\The Photo Shop Screensaver\Kiosk\</PublishUrl>
+    <PublishUrl>ftp://asd.shif.co/The Photo Shop Screensaver/kiosk/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -47,8 +47,8 @@
     <SuiteName>MetroKiosk System</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
-    <ApplicationRevision>9</ApplicationRevision>
-    <ApplicationVersion>2.2015.12.%2a</ApplicationVersion>
+    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationVersion>2.2017.6.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -138,6 +138,9 @@
     </Compile>
     <Compile Include="MK2017\MetroKioskWPF.xaml.vb">
       <DependentUpon>MetroKioskWPF.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MK2017\Pages\NameEntry.xaml.vb">
+      <DependentUpon>NameEntry.xaml</DependentUpon>
     </Compile>
     <Compile Include="MK2017\Pages\SelectFolder.xaml.vb">
       <DependentUpon>SelectFolder.xaml</DependentUpon>
@@ -532,6 +535,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MK2017\Pages\NameEntry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MK2017\Pages\SelectFolder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -566,6 +573,27 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="MK2017\Controls\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MK2017\Pages\compact_disc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MK2017\Pages\memory_stick_duo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MK2017\Pages\smart_media_card.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MK2017\Pages\usb_flash_drive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MK2017\Pages\sd_memory_card.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MK2017\Pages\compact_flash_card.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MK2017\Pages\xd_picture_card.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

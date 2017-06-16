@@ -80,6 +80,7 @@ Class SelectFolder
     End Sub
 
     Private Sub GoButton(sender As Button, e As Windows.RoutedEventArgs) Handles SelectAllButton.Click, SelectCurrentFolder.Click
-        MsgBox("Will load files from " + DirectCast(sender.Tag, DirectoryInfo).FullName)
+        'MsgBox("Will load files from " + DirectCast(sender.Tag, DirectoryInfo).FullName)
+        _Main.PushPage(New NameEntry)
     End Sub
 End Class

@@ -98,6 +98,10 @@
                     </EasingThicknessKeyFrame.EasingFunction>
                 </EasingThicknessKeyFrame>
             </ThicknessAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="textBlock1">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.58" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.72" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="ShowNextButton">
             <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="NextButtonGrid">
@@ -151,9 +155,233 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
+        <Storyboard x:Key="AnimatePageIn">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Memstick">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="CD">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="SmartMedia">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="USB">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="SD">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.7" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="CF">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="XD">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.9" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Memstick">
+                <EasingThicknessKeyFrame KeyTime="0" Value="5,-80,5,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:1" Value="5,-80,5,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:1.3" Value="5,0">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+            </ThicknessAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="CD">
+                <EasingThicknessKeyFrame KeyTime="0" Value="5,-80,5,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:1.1" Value="5,-80,5,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:1.4" Value="5,0">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+            </ThicknessAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="SmartMedia">
+                <EasingThicknessKeyFrame KeyTime="0" Value="5,-80,5,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:1.2" Value="5,-80,5,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:1.5" Value="5,0">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+            </ThicknessAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="USB">
+                <EasingThicknessKeyFrame KeyTime="0" Value="5,-80,5,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:1.3" Value="5,-80,5,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:1.6" Value="5,0">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+            </ThicknessAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="SD">
+                <EasingThicknessKeyFrame KeyTime="0" Value="5,-80,5,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:1.4" Value="5,-80,5,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:1.7" Value="5,0">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+            </ThicknessAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="CF">
+                <EasingThicknessKeyFrame KeyTime="0" Value="5,-80,5,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:1.5" Value="5,-80,5,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:1.8" Value="5,0">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+            </ThicknessAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="XD">
+                <EasingThicknessKeyFrame KeyTime="0" Value="5,-80,5,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:1.6" Value="5,-80,5,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:1.9" Value="5,0">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="AnimateStorages" RepeatBehavior="Forever">
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Memstick">
+                <EasingThicknessKeyFrame KeyTime="0:0:3" Value="5,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:3.3" Value="5,-40,5,0">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+                <EasingThicknessKeyFrame KeyTime="0:0:3.85" Value="5,0">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseInOut"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+            </ThicknessAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="CD">
+                <EasingThicknessKeyFrame KeyTime="0:0:3.15" Value="5,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:3.45" Value="5,-40,5,0">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+                <EasingThicknessKeyFrame KeyTime="0:0:4" Value="5,0">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseInOut"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+            </ThicknessAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="SmartMedia">
+                <EasingThicknessKeyFrame KeyTime="0:0:3.3" Value="5,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:3.6" Value="5,-40,5,0">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+                <EasingThicknessKeyFrame KeyTime="0:0:4.15" Value="5,0">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseInOut"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+            </ThicknessAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="USB">
+                <EasingThicknessKeyFrame KeyTime="0:0:3.45" Value="5,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:3.75" Value="5,-40,5,0">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+                <EasingThicknessKeyFrame KeyTime="0:0:4.3" Value="5,0">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseInOut"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+            </ThicknessAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="SD">
+                <EasingThicknessKeyFrame KeyTime="0:0:3.6" Value="5,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:3.9" Value="5,-40,5,0">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+                <EasingThicknessKeyFrame KeyTime="0:0:4.45" Value="5,0">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseInOut"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+            </ThicknessAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="CF">
+                <EasingThicknessKeyFrame KeyTime="0:0:3.75" Value="5,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:4.05" Value="5,-40,5,0">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+                <EasingThicknessKeyFrame KeyTime="0:0:4.6" Value="5,0">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseInOut"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+            </ThicknessAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="XD">
+                <EasingThicknessKeyFrame KeyTime="0:0:3.9" Value="5,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:4.2" Value="5,-40,5,0">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+                <EasingThicknessKeyFrame KeyTime="0:0:4.75" Value="5,0">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseInOut"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
     </Page.Resources>
     <Page.Triggers>
-        <EventTrigger RoutedEvent="FrameworkElement.Loaded"/>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource AnimatePageIn}"/>
+            <BeginStoryboard Storyboard="{StaticResource AnimateStorages}"/>
+        </EventTrigger>
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="NextButton">
             <BeginStoryboard x:Name="AnimatePageOut_BeginStoryboard" Storyboard="{StaticResource AnimatePageOut}"/>
         </EventTrigger>
@@ -166,9 +394,32 @@
     </Page.Background>
     <Grid>
         <Viewbox x:Name="AnimationContainer" Margin="80,120,80,80">
-            <Grid x:Name="SDAnimationContainer" Height="200" Width="400">
-                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="[animation]" VerticalAlignment="Center" FontSize="72" Foreground="#7F0E0E0E"/>
-            </Grid>
+            <WrapPanel x:Name="SDAnimationContainer" Height="72" Margin="0,100,0,0">
+
+                <Border x:Name="Memstick" Background="#CC7DA8F3" HorizontalAlignment="Left" Height="72" Margin="5,0" BorderBrush="#E5467FD1" VerticalAlignment="Top" Width="72" CornerRadius="100" BorderThickness="2">
+                    <Image Source="memory_stick_duo.png" Margin="7"/>
+                </Border>
+                <Border x:Name="CD" Background="#CC7DA8F3" HorizontalAlignment="Left" Height="72" Margin="5,0" BorderBrush="#E5467FD1" VerticalAlignment="Top" Width="72" CornerRadius="100" BorderThickness="2">
+                    <Image Source="compact_disc.png" Margin="7"/>
+                </Border>
+                <Border x:Name="SmartMedia" Background="#CC7DA8F3" HorizontalAlignment="Left" Height="72" Margin="5,0" BorderBrush="#E5467FD1" VerticalAlignment="Top" Width="72" CornerRadius="100" BorderThickness="2">
+                    <Image Source="smart_media_card.png" Margin="7"/>
+                </Border>
+                <Border x:Name="USB" Background="#CC7DA8F3" HorizontalAlignment="Left" Height="72" Margin="5,0" BorderBrush="#E5467FD1" VerticalAlignment="Top" Width="72" CornerRadius="100" BorderThickness="2">
+                    <Image Source="usb_flash_drive.png" Margin="7"/>
+                </Border>
+                <Border x:Name="SD" Background="#CC7DA8F3" HorizontalAlignment="Left" Height="72" Margin="5,0" BorderBrush="#E5467FD1" VerticalAlignment="Top" Width="72" CornerRadius="100" BorderThickness="2">
+                    <Image Source="sd_memory_card.png" Margin="7"/>
+                </Border>
+                <Border x:Name="CF" Background="#CC7DA8F3" HorizontalAlignment="Left" Height="72" Margin="5,0" BorderBrush="#E5467FD1" VerticalAlignment="Top" Width="72" CornerRadius="100" BorderThickness="2">
+                    <Image Source="compact_flash_card.png" Margin="7"/>
+                </Border>
+                <Border x:Name="XD" Background="#CC7DA8F3" HorizontalAlignment="Left" Height="72" Margin="5,0" BorderBrush="#E5467FD1" VerticalAlignment="Top" Width="72" CornerRadius="100" BorderThickness="2">
+                    <Image Source="xd_picture_card.png" Margin="7"/>
+                </Border>
+
+
+            </WrapPanel>
         </Viewbox>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Margin="10,30,0,0" TextWrapping="Wrap" Text="Please connect your storage media" VerticalAlignment="Top" FontSize="36" FontFamily="Segoe UI Semilight"/>
         <Border x:Name="DeviceInfoGrid"  HorizontalAlignment="Center" Height="206.725" Margin="0,80,0,0" VerticalAlignment="Center" Width="582.245" BorderThickness="1" BorderBrush="#FF192F46" Opacity="0" RenderTransformOrigin="0.5,0.5">
@@ -250,6 +501,7 @@
                 </Grid>
             </Button>
         </Grid>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Bottom" Margin="0,0,0,30" Foreground="#FF830000" FontSize="24" TextAlignment="Center" Opacity="0"><Run Text="Do not disconnect your media until we tell you it's safe" TextDecorations="Underline" FontWeight="Bold"/><LineBreak/><Run FontWeight="Normal" Text="If you do, you could lose any data stored on it." FontFamily="Segoe UI Semibold" FontSize="18" Foreground="Black"/></TextBlock>
 
     </Grid>
 </Page>
