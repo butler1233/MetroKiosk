@@ -289,10 +289,62 @@
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button27">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1.12" Value="1">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="1">
                     <EasingDoubleKeyFrame.EasingFunction>
                         <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button26_Copy">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="DoneButton">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.015"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="AnimatePageOut">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-200">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="NameBox">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-200">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="NameBox">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseIn"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
@@ -302,6 +354,9 @@
         <EventTrigger RoutedEvent="FrameworkElement.Loaded">
             <BeginStoryboard Storyboard="{StaticResource Entry}"/>
         </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="DoneButton">
+            <BeginStoryboard x:Name="AnimatePageOut_BeginStoryboard" Storyboard="{StaticResource AnimatePageOut}"/>
+        </EventTrigger>
     </Page.Triggers>
     <Page.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -310,69 +365,133 @@
         </LinearGradientBrush>
     </Page.Background>
     <Viewbox>
-    <Grid>
-        <TextBox x:Name="NameBox" Margin="30,30,30,0" TextWrapping="Wrap" VerticalAlignment="Top" Padding="8" FontFamily="Arial" FontSize="72" HorizontalContentAlignment="Center" SelectionOpacity="0"/>
-        <Grid Margin="30,135.793,30,30">
-            <Grid Height="300" Width="850" VerticalAlignment="Top">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Button x:Name="button" Content="Q" Template="{DynamicResource NamedKey}" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5"/>
-                <Button x:Name="button1" Content="W" Grid.ColumnSpan="2" Grid.Column="2" Template="{DynamicResource NamedKey}" RenderTransformOrigin="0.5,0.5"/>
-                <Button x:Name="button2" Content="E" Grid.ColumnSpan="2" Grid.Column="4" Template="{DynamicResource NamedKey}" RenderTransformOrigin="0.5,0.5"/>
-                <Button x:Name="button3" Content="R" Grid.ColumnSpan="2" Grid.Column="6" Template="{DynamicResource NamedKey}" RenderTransformOrigin="0.5,0.5"/>
-                <Button x:Name="button4" Content="T" Grid.ColumnSpan="2" Grid.Column="8" Template="{DynamicResource NamedKey}" RenderTransformOrigin="0.5,0.5"/>
-                <Button x:Name="button5" Content="Y" Grid.ColumnSpan="2" Grid.Column="10" Template="{DynamicResource NamedKey}" RenderTransformOrigin="0.5,0.5"/>
-                <Button x:Name="button6" Content="U" Grid.ColumnSpan="2" Grid.Column="12" Template="{DynamicResource NamedKey}" RenderTransformOrigin="0.5,0.5"/>
-                <Button x:Name="button7" Content="I" Grid.ColumnSpan="2" Grid.Column="14" Template="{DynamicResource NamedKey}" RenderTransformOrigin="0.5,0.5"/>
-                <Button x:Name="button8" Content="O" Grid.ColumnSpan="2" Grid.Column="16" Template="{DynamicResource NamedKey}" RenderTransformOrigin="0.5,0.5"/>
-                <Button x:Name="button9" Content="P" Grid.Column="18" Template="{DynamicResource NamedKey}" Margin="0,0,-44.737,0" RenderTransformOrigin="0.5,0.5"/>
-                <Button x:Name="button10" Content="A" Template="{DynamicResource NamedKey}" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
-                <Button x:Name="button11" Content="S" Grid.ColumnSpan="2" Grid.Column="3" Template="{DynamicResource NamedKey}" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
-                <Button x:Name="button12" Content="D" Grid.ColumnSpan="2" Grid.Column="5" Template="{DynamicResource NamedKey}" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
-                <Button x:Name="button13" Content="F" Grid.ColumnSpan="2" Grid.Column="7" Template="{DynamicResource NamedKey}" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
-                <Button x:Name="button14" Content="G" Grid.ColumnSpan="2" Grid.Column="9" Template="{DynamicResource NamedKey}" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
-                <Button x:Name="button15" Content="H" Grid.ColumnSpan="2" Grid.Column="11" Template="{DynamicResource NamedKey}" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
-                <Button x:Name="button16" Content="J" Grid.ColumnSpan="2" Grid.Column="13" Template="{DynamicResource NamedKey}" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
-                <Button x:Name="button17" Content="K" Grid.ColumnSpan="2" Grid.Column="15" Template="{DynamicResource NamedKey}" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
-                <Button x:Name="button18" Content="L" Grid.ColumnSpan="2" Grid.Column="17" Template="{DynamicResource NamedKey}" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
-                <Button x:Name="button19" Content="Z" Template="{DynamicResource NamedKey}" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="2" RenderTransformOrigin="0.5,0.5"/>
-                <Button x:Name="button20" Content="X" Grid.ColumnSpan="2" Grid.Column="4" Template="{DynamicResource NamedKey}" Grid.Row="2" RenderTransformOrigin="0.5,0.5"/>
-                <Button x:Name="button21" Content="C" Grid.ColumnSpan="2" Grid.Column="6" Template="{DynamicResource NamedKey}" Grid.Row="2" RenderTransformOrigin="0.5,0.5"/>
-                <Button x:Name="button22" Content="V" Grid.ColumnSpan="2" Grid.Column="8" Template="{DynamicResource NamedKey}" Grid.Row="2" RenderTransformOrigin="0.5,0.5"/>
-                <Button x:Name="button23" Content="B" Grid.ColumnSpan="2" Grid.Column="10" Template="{DynamicResource NamedKey}" Grid.Row="2" RenderTransformOrigin="0.5,0.5"/>
-                <Button x:Name="button24" Content="N" Grid.ColumnSpan="2" Grid.Column="12" Template="{DynamicResource NamedKey}" Grid.Row="2" RenderTransformOrigin="0.5,0.5"/>
-                <Button x:Name="button25" Content="M" Grid.ColumnSpan="2" Grid.Column="14" Template="{DynamicResource NamedKey}" Grid.Row="2" RenderTransformOrigin="0.5,0.5"/>
-                <Button x:Name="button26" Content="-" Grid.ColumnSpan="2" Grid.Column="16" Template="{DynamicResource NamedKey}" Grid.Row="2" RenderTransformOrigin="0.5,0.5" Click="Press"/>
-                <Button x:Name="button27" Content="Space" Grid.ColumnSpan="10" Grid.Column="5" Template="{DynamicResource NamedKey}" Grid.Row="3" RenderTransformOrigin="0.5,0.5" Click="Button_Click"/>
+        <Grid>
+            <TextBox x:Name="NameBox" Margin="30,30,30,0" TextWrapping="Wrap" VerticalAlignment="Top" Padding="8" FontFamily="Arial" FontSize="72" HorizontalContentAlignment="Center" SelectionOpacity="0" RenderTransformOrigin="0.5,0.5">
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <Grid Margin="30,135.793,30,30">
+                <Grid x:Name="grid" Height="300" Width="850" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+                    <Grid.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Grid.RenderTransform>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Button x:Name="button" Content="Q" Template="{DynamicResource NamedKey}" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5"/>
+                    <Button x:Name="button1" Content="W" Grid.ColumnSpan="2" Grid.Column="2" Template="{DynamicResource NamedKey}" RenderTransformOrigin="0.5,0.5"/>
+                    <Button x:Name="button2" Content="E" Grid.ColumnSpan="2" Grid.Column="4" Template="{DynamicResource NamedKey}" RenderTransformOrigin="0.5,0.5"/>
+                    <Button x:Name="button3" Content="R" Grid.ColumnSpan="2" Grid.Column="6" Template="{DynamicResource NamedKey}" RenderTransformOrigin="0.5,0.5"/>
+                    <Button x:Name="button4" Content="T" Grid.ColumnSpan="2" Grid.Column="8" Template="{DynamicResource NamedKey}" RenderTransformOrigin="0.5,0.5"/>
+                    <Button x:Name="button5" Content="Y" Grid.ColumnSpan="2" Grid.Column="10" Template="{DynamicResource NamedKey}" RenderTransformOrigin="0.5,0.5"/>
+                    <Button x:Name="button6" Content="U" Grid.ColumnSpan="2" Grid.Column="12" Template="{DynamicResource NamedKey}" RenderTransformOrigin="0.5,0.5"/>
+                    <Button x:Name="button7" Content="I" Grid.ColumnSpan="2" Grid.Column="14" Template="{DynamicResource NamedKey}" RenderTransformOrigin="0.5,0.5"/>
+                    <Button x:Name="button8" Content="O" Grid.ColumnSpan="2" Grid.Column="16" Template="{DynamicResource NamedKey}" RenderTransformOrigin="0.5,0.5"/>
+                    <Button x:Name="button9" Content="P" Grid.Column="18" Template="{DynamicResource NamedKey}" Margin="0,0,-44.737,0" RenderTransformOrigin="0.5,0.5"/>
+                    <Button x:Name="button10" Content="A" Template="{DynamicResource NamedKey}" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
+                    <Button x:Name="button11" Content="S" Grid.ColumnSpan="2" Grid.Column="3" Template="{DynamicResource NamedKey}" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
+                    <Button x:Name="button12" Content="D" Grid.ColumnSpan="2" Grid.Column="5" Template="{DynamicResource NamedKey}" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
+                    <Button x:Name="button13" Content="F" Grid.ColumnSpan="2" Grid.Column="7" Template="{DynamicResource NamedKey}" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
+                    <Button x:Name="button14" Content="G" Grid.ColumnSpan="2" Grid.Column="9" Template="{DynamicResource NamedKey}" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
+                    <Button x:Name="button15" Content="H" Grid.ColumnSpan="2" Grid.Column="11" Template="{DynamicResource NamedKey}" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
+                    <Button x:Name="button16" Content="J" Grid.ColumnSpan="2" Grid.Column="13" Template="{DynamicResource NamedKey}" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
+                    <Button x:Name="button17" Content="K" Grid.ColumnSpan="2" Grid.Column="15" Template="{DynamicResource NamedKey}" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
+                    <Button x:Name="button18" Content="L" Grid.ColumnSpan="2" Grid.Column="17" Template="{DynamicResource NamedKey}" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
+                    <Button x:Name="button19" Content="Z" Template="{DynamicResource NamedKey}" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="2" RenderTransformOrigin="0.5,0.5"/>
+                    <Button x:Name="button20" Content="X" Grid.ColumnSpan="2" Grid.Column="4" Template="{DynamicResource NamedKey}" Grid.Row="2" RenderTransformOrigin="0.5,0.5"/>
+                    <Button x:Name="button21" Content="C" Grid.ColumnSpan="2" Grid.Column="6" Template="{DynamicResource NamedKey}" Grid.Row="2" RenderTransformOrigin="0.5,0.5"/>
+                    <Button x:Name="button22" Content="V" Grid.ColumnSpan="2" Grid.Column="8" Template="{DynamicResource NamedKey}" Grid.Row="2" RenderTransformOrigin="0.5,0.5"/>
+                    <Button x:Name="button23" Content="B" Grid.ColumnSpan="2" Grid.Column="10" Template="{DynamicResource NamedKey}" Grid.Row="2" RenderTransformOrigin="0.5,0.5"/>
+                    <Button x:Name="button24" Content="N" Grid.ColumnSpan="2" Grid.Column="12" Template="{DynamicResource NamedKey}" Grid.Row="2" RenderTransformOrigin="0.5,0.5"/>
+                    <Button x:Name="button25" Content="M" Grid.ColumnSpan="2" Grid.Column="14" Template="{DynamicResource NamedKey}" Grid.Row="2" RenderTransformOrigin="0.5,0.5"/>
+                    <Button x:Name="button26" Content="-" Grid.ColumnSpan="2" Grid.Column="16" Template="{DynamicResource NamedKey}" Grid.Row="2" RenderTransformOrigin="0.5,0.5" Click="Press"/>
+                    <Button x:Name="button27" Content="Space" Grid.ColumnSpan="10" Grid.Column="5" Template="{DynamicResource NamedKey}" Grid.Row="3" RenderTransformOrigin="0.5,0.5" Click="Button_Click"/>
+                    <Button x:Name="button26_Copy" Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="3" RenderTransformOrigin="0.5,0.5">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border x:Name="border" BorderBrush="#FF952929" BorderThickness="{TemplateBinding BorderThickness}" Background="#FFCF4A4A" Grid.ColumnSpan="2" Margin="1" SnapsToDevicePixels="True">
+                                    <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="2" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Content="{TemplateBinding Content}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsDefaulted" Value="True">
+                                        <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" TargetName="border" Value="#FF3767AC"/>
+                                        <Setter Property="BorderBrush" TargetName="border" Value="#FF28579B"/>
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Background" TargetName="border" Value="#FFF4F4F4"/>
+                                        <Setter Property="BorderBrush" TargetName="border" Value="#FFADB2B5"/>
+                                        <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="#FF838383"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                        <Image Source="Backspacewhite.png" Margin="6"></Image>
+                    </Button>
+                    <Button x:Name="DoneButton" Content="✓" Grid.ColumnSpan="2" Grid.Column="15" Grid.Row="3" RenderTransformOrigin="0.5,0.5">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border x:Name="border" BorderBrush="#FF299542" BorderThickness="{TemplateBinding BorderThickness}" Background="#FF4ACF6E" Grid.ColumnSpan="2" Margin="1" SnapsToDevicePixels="True">
+                                    <TextBlock x:Name="contentPresenter" Foreground="White" Focusable="False" FontSize="36" FontFamily="Segoe UI Semilight" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="2" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Text="{TemplateBinding Content}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsDefaulted" Value="True">
+                                        <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" TargetName="border" Value="#FF3767AC"/>
+                                        <Setter Property="BorderBrush" TargetName="border" Value="#FF28579B"/>
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Background" TargetName="border" Value="#FFF4F4F4"/>
+                                        <Setter Property="BorderBrush" TargetName="border" Value="#FFADB2B5"/>
+                                        <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="#FF838383"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
             </Grid>
-        </Grid>
 
-    </Grid>
+        </Grid>
     </Viewbox>
 </Page>

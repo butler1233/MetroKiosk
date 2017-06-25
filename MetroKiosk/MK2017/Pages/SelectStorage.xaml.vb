@@ -127,7 +127,7 @@ Class SelectStorage
     End Sub
 
     Private Sub LoadFolderChooser()
-        Dim Folders As New SelectFolder(_Main, files, DiskType, DiskFolder)
+        Dim Folders As New SizeSelector(_Main, files, DiskType, DiskFolder)
         _Main.PushPage(Folders)
     End Sub
 End Class

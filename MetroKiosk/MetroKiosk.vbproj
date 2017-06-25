@@ -47,7 +47,7 @@
     <SuiteName>MetroKiosk System</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
-    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationRevision>10</ApplicationRevision>
     <ApplicationVersion>2.2017.6.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -89,6 +89,12 @@
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ImageProcessor, Version=2.5.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageProcessor.2.5.4\lib\net45\ImageProcessor.dll</HintPath>
+    </Reference>
+    <Reference Include="InTheHand.Net.Personal, Version=3.5.605.0, Culture=neutral, PublicKeyToken=ea38caa273134499, processorArchitecture=MSIL">
+      <HintPath>..\packages\32feet.NET.3.5.0.0\lib\net\InTheHand.Net.Personal.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
@@ -136,8 +142,14 @@
     <Compile Include="Application.xaml.vb">
       <DependentUpon>Application.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MK2017\BluetoothIntegration.xaml.vb">
+      <DependentUpon>BluetoothIntegration.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MK2017\MetroKioskWPF.xaml.vb">
       <DependentUpon>MetroKioskWPF.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MK2017\Pages\GalleryContorl.xaml.vb">
+      <DependentUpon>GalleryContorl.xaml</DependentUpon>
     </Compile>
     <Compile Include="MK2017\Pages\NameEntry.xaml.vb">
       <DependentUpon>NameEntry.xaml</DependentUpon>
@@ -148,8 +160,14 @@
     <Compile Include="MK2017\Pages\SelectStorage.xaml.vb">
       <DependentUpon>SelectStorage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MK2017\Pages\SizeSelector.xaml.vb">
+      <DependentUpon>SizeSelector.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MK2017\Pages\TestPage1.xaml.vb">
       <DependentUpon>TestPage1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MK2017\Pages\WPFGallery.xaml.vb">
+      <DependentUpon>WPFGallery.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pre2017\dialogs\alertdialog.Designer.vb">
       <DependentUpon>alertdialog.vb</DependentUpon>
@@ -531,7 +549,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
+    <Page Include="MK2017\BluetoothIntegration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MK2017\MetroKioskWPF.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MK2017\Pages\GalleryContorl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -547,25 +573,34 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MK2017\Pages\SizeSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MK2017\Pages\TestPage1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MK2017\Pages\WPFGallery.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Service_6_4.png" />
+    <None Include="packages.config" />
+    <Resource Include="Resources\Service_6_4.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Service_7_5.png" />
+    <Resource Include="Resources\Service_7_5.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Service_8_6.png" />
+    <Resource Include="Resources\Service_8_6.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Service_8_10.png" />
+    <Resource Include="Resources\Service_8_10.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Service_10_12.png" />
+    <Resource Include="Resources\Service_10_12.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\SpeakOff.png" />
@@ -594,6 +629,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="MK2017\Pages\xd_picture_card.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MK2017\Pages\Backspacewhite.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

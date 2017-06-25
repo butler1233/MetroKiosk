@@ -1,6 +1,7 @@
 ﻿Imports System.IO
 Imports System.Threading
 Imports System.Windows.Controls
+Imports System.Windows.Media.Animation
 Imports System.Windows.Threading
 
 Class SelectFolder
@@ -79,8 +80,42 @@ Class SelectFolder
         e.Handled = True
     End Sub
 
-    Private Sub GoButton(sender As Button, e As Windows.RoutedEventArgs) Handles SelectAllButton.Click, SelectCurrentFolder.Click
-        'MsgBox("Will load files from " + DirectCast(sender.Tag, DirectoryInfo).FullName)
-        _Main.PushPage(New NameEntry)
+
+
+    Dim NewFiles As List(Of FileInfo)
+
+
+    Private Sub NextPage(Folder As DirectoryInfo)
+        Dim SB As Storyboard = Me.FindResource("LoadingSPiner")
+        SB.Begin()
+        Loader.Visibility = Windows.Visibility.Visible
+        Maingrid.IsEnabled = False
+        Dim Hold As New Thread(Sub()
+                                   If _rootFolder.FullName = Folder.FullName Then
+                                       NewFiles = _Files
+                                   Else
+                                       NewFiles = _Files.Where(Function(File) File.FullName.StartsWith(Folder.FullName)).ToList
+                                   End If
+                                   _Disp.Invoke(Sub()
+                                                    Dim SB2 As Storyboard = Me.FindResource("AnimatePageOut")
+                                                    SB2.Begin()
+                                                End Sub)
+                                   Thread.Sleep(450)
+                                   _Disp.Invoke(Sub() LoadNext())
+                               End Sub)
+        Hold.Start()
+    End Sub
+
+    Private Sub LoadNext()
+        Dim Folders As New NameEntry(_Main, NewFiles)
+        _Main.PushPage(Folders)
+    End Sub
+
+    Private Sub SelectAllButton_Click(sender As Object, e As Windows.RoutedEventArgs) Handles SelectAllButton.Click
+        NextPage(_rootFolder)
+    End Sub
+
+    Private Sub SelectCurrentFolder_Click(sender As Object, e As Windows.RoutedEventArgs) Handles SelectCurrentFolder.Click
+        NextPage(_CurrentFolder)
     End Sub
 End Class

@@ -68,7 +68,7 @@ Partial Class StorageDeviceChooser
         Me.headtext.Font = New System.Drawing.Font("Segoe UI Light", 20.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.headtext.Location = New System.Drawing.Point(12, 117)
         Me.headtext.Name = "headtext"
-        Me.headtext.Size = New System.Drawing.Size(505, 37)
+        Me.headtext.Size = New System.Drawing.Size(749, 54)
         Me.headtext.TabIndex = 1
         Me.headtext.Text = "Please insert a memory card or USB device."
         '
@@ -78,7 +78,7 @@ Partial Class StorageDeviceChooser
         Me.Label2.Font = New System.Drawing.Font("Segoe UI Light", 22.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(12, 9)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(180, 41)
+        Me.Label2.Size = New System.Drawing.Size(261, 60)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Load Images"
         '
@@ -120,7 +120,7 @@ Partial Class StorageDeviceChooser
         Me.btfinish.ForeColor = System.Drawing.Color.White
         Me.btfinish.Location = New System.Drawing.Point(7, 5)
         Me.btfinish.Name = "btfinish"
-        Me.btfinish.Size = New System.Drawing.Size(108, 37)
+        Me.btfinish.Size = New System.Drawing.Size(159, 54)
         Me.btfinish.TabIndex = 0
         Me.btfinish.Text = "Next   >"
         '
@@ -140,7 +140,7 @@ Partial Class StorageDeviceChooser
         Me.volused.AutoSize = True
         Me.volused.Location = New System.Drawing.Point(104, 25)
         Me.volused.Name = "volused"
-        Me.volused.Size = New System.Drawing.Size(84, 25)
+        Me.volused.Size = New System.Drawing.Size(123, 38)
         Me.volused.TabIndex = 9
         Me.volused.Text = "Capacity:"
         '
@@ -149,7 +149,7 @@ Partial Class StorageDeviceChooser
         Me.volcapacity.AutoSize = True
         Me.volcapacity.Location = New System.Drawing.Point(82, 0)
         Me.volcapacity.Name = "volcapacity"
-        Me.volcapacity.Size = New System.Drawing.Size(84, 25)
+        Me.volcapacity.Size = New System.Drawing.Size(123, 38)
         Me.volcapacity.TabIndex = 8
         Me.volcapacity.Text = "Capacity:"
         '
@@ -158,7 +158,7 @@ Partial Class StorageDeviceChooser
         Me.Label4.AutoSize = True
         Me.Label4.Location = New System.Drawing.Point(3, 25)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(108, 25)
+        Me.Label4.Size = New System.Drawing.Size(160, 38)
         Me.Label4.TabIndex = 7
         Me.Label4.Text = "Used Space:"
         '
@@ -167,7 +167,7 @@ Partial Class StorageDeviceChooser
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(3, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(84, 25)
+        Me.Label1.Size = New System.Drawing.Size(123, 38)
         Me.Label1.TabIndex = 6
         Me.Label1.Text = "Capacity:"
         '
@@ -177,7 +177,7 @@ Partial Class StorageDeviceChooser
         Me.Label7.BackColor = System.Drawing.Color.Transparent
         Me.Label7.Location = New System.Drawing.Point(143, 200)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(95, 25)
+        Me.Label7.Size = New System.Drawing.Size(142, 38)
         Me.Label7.TabIndex = 8
         Me.Label7.Text = "Scanning..."
         '
@@ -204,7 +204,7 @@ Partial Class StorageDeviceChooser
         Me.Label5.AutoSize = True
         Me.Label5.Location = New System.Drawing.Point(5, 115)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(101, 25)
+        Me.Label5.Size = New System.Drawing.Size(149, 38)
         Me.Label5.TabIndex = 6
         Me.Label5.Text = "Image files:"
         '
@@ -213,7 +213,7 @@ Partial Class StorageDeviceChooser
         Me.volname.AutoSize = True
         Me.volname.Location = New System.Drawing.Point(4, 40)
         Me.volname.Name = "volname"
-        Me.volname.Size = New System.Drawing.Size(125, 25)
+        Me.volname.Size = New System.Drawing.Size(184, 38)
         Me.volname.TabIndex = 1
         Me.volname.Text = "Volume Name"
         '
@@ -223,16 +223,17 @@ Partial Class StorageDeviceChooser
         Me.devicetype.Font = New System.Drawing.Font("Segoe UI Light", 18.0!)
         Me.devicetype.Location = New System.Drawing.Point(4, 4)
         Me.devicetype.Name = "devicetype"
-        Me.devicetype.Size = New System.Drawing.Size(135, 32)
+        Me.devicetype.Size = New System.Drawing.Size(198, 48)
         Me.devicetype.TabIndex = 0
         Me.devicetype.Text = "Device Type"
         '
         'ListBox1
         '
         Me.ListBox1.FormattingEnabled = True
+        Me.ListBox1.ItemHeight = 23
         Me.ListBox1.Location = New System.Drawing.Point(19, 439)
         Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(601, 134)
+        Me.ListBox1.Size = New System.Drawing.Size(601, 119)
         Me.ListBox1.TabIndex = 6
         Me.ListBox1.Visible = False
         '
@@ -267,7 +268,7 @@ Partial Class StorageDeviceChooser
         Me.continuebutton.ForeColor = System.Drawing.Color.White
         Me.continuebutton.Location = New System.Drawing.Point(7, 5)
         Me.continuebutton.Name = "continuebutton"
-        Me.continuebutton.Size = New System.Drawing.Size(165, 37)
+        Me.continuebutton.Size = New System.Drawing.Size(243, 54)
         Me.continuebutton.TabIndex = 0
         Me.continuebutton.Text = "Continue    >"
         '
@@ -287,7 +288,7 @@ Partial Class StorageDeviceChooser
         Me.Label3.Font = New System.Drawing.Font("Segoe UI Light", 20.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(225, 65)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(138, 37)
+        Me.Label3.Size = New System.Drawing.Size(203, 54)
         Me.Label3.TabIndex = 8
         Me.Label3.Text = "files found."
         '
@@ -322,13 +323,13 @@ Partial Class StorageDeviceChooser
         Me.bluetoothinit.ForeColor = System.Drawing.Color.White
         Me.bluetoothinit.Location = New System.Drawing.Point(7, 5)
         Me.bluetoothinit.Name = "bluetoothinit"
-        Me.bluetoothinit.Size = New System.Drawing.Size(294, 37)
+        Me.bluetoothinit.Size = New System.Drawing.Size(434, 54)
         Me.bluetoothinit.TabIndex = 0
         Me.bluetoothinit.Text = "Transfer over Bluetooth..."
         '
         'StorageDeviceChooser
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 23.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.WhiteSmoke
         Me.ClientSize = New System.Drawing.Size(1024, 604)
@@ -346,7 +347,6 @@ Partial Class StorageDeviceChooser
         Me.Name = "StorageDeviceChooser"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "StorageDeviceChooser"
-        Me.TopMost = True
         Me.infopanel.ResumeLayout(False)
         Me.infopanel.PerformLayout()
         Me.btfbox.ResumeLayout(False)
