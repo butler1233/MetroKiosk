@@ -68,27 +68,27 @@ Class SizeSelector
     End Sub
 
     Private Sub _6x4Button_Click(sender As Object, e As Windows.RoutedEventArgs) Handles _6x4Button.Click
-        _Main.SizeID = 1
+        _Main.SizeID = Sizes.s6x4
         FakeNextPage()
     End Sub
 
     Private Sub _7x5Button_Click(sender As Object, e As Windows.RoutedEventArgs) Handles _7x5Button.Click
-        _Main.SizeID = 2
+        _Main.SizeID = Sizes.s7x5
         FakeNextPage()
     End Sub
 
     Private Sub _8x6Button_Click(sender As Object, e As Windows.RoutedEventArgs) Handles _8x6Button.Click
-        _Main.SizeID = 3
+        _Main.SizeID = Sizes.s8x6
         FakeNextPage()
     End Sub
 
     Private Sub _10x8Button_Click(sender As Object, e As Windows.RoutedEventArgs) Handles _10x8Button.Click
-        _Main.SizeID = 4
+        _Main.SizeID = Sizes.s8x10
         FakeNextPage()
     End Sub
 
     Private Sub _10x12Button_Click(sender As Object, e As Windows.RoutedEventArgs) Handles _10x12Button.Click
-        _Main.SizeID = 5
+        _Main.SizeID = Sizes.s10x12
         FakeNextPage()
     End Sub
 End Class

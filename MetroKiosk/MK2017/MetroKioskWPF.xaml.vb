@@ -2,7 +2,7 @@
 
 Public Class MetroKioskWPF
 
-    Public SizeID As Integer = 1
+    Public SizeID As Sizes = Sizes.s6x4
 
     Private Sub Starter_MouseLeftButtonDown(sender As Object, e As Windows.Input.MouseButtonEventArgs) Handles Starter.MouseLeftButtonDown
         'Navigate tjhe frame to the first page. This should get us going.

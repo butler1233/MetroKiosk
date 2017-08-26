@@ -59,7 +59,7 @@
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <OutputPath>Z:\MetroKiosk\</OutputPath>
+    <OutputPath>\\ITS-STILL-HAPPE\rdbg\MetroKiosk\</OutputPath>
     <DocumentationFile>ThePSKiosk.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
     <Prefer32Bit>false</Prefer32Bit>
@@ -145,9 +145,11 @@
     <Compile Include="MK2017\BluetoothIntegration.xaml.vb">
       <DependentUpon>BluetoothIntegration.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MK2017\Common.vb" />
     <Compile Include="MK2017\MetroKioskWPF.xaml.vb">
       <DependentUpon>MetroKioskWPF.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MK2017\OrderedSizes.vb" />
     <Compile Include="MK2017\Pages\GalleryContorl.xaml.vb">
       <DependentUpon>GalleryContorl.xaml</DependentUpon>
     </Compile>

@@ -1,6 +1,7 @@
 ﻿Imports System.IO
 Imports System.Threading
 Imports System.Windows.Controls
+Imports System.Windows.Media.Animation
 
 Class NameEntry
 
@@ -42,15 +43,30 @@ Class NameEntry
     End Sub
 
     Private Sub NextButton_Click(sender As Object, e As Windows.RoutedEventArgs) Handles DoneButton.Click
-        Dim Hold As New Thread(Sub()
+        NextPage()
+    End Sub
+
+    Dim gallery As WPFGallery
+
+    Private Sub NextPage()
+        Dim SB As Storyboard = Me.FindResource("LoadingSPiner")
+        SB.Begin()
+        Dim SB2 As Storyboard = Me.FindResource("AnimatePageOut")
+        SB2.Begin()
+        _MW.FrameTitle.Text = "Please Wait..."
+        Loader.Visibility = Windows.Visibility.Visible
+        MainGrid.IsEnabled = False
+        Dim Hold As New Thread(Async Sub()
                                    Thread.Sleep(420)
-                                   _Disp.Invoke(Sub() LoadFolderChooser())
+                                   Await _Disp.BeginInvoke(Sub() gallery = New WPFGallery(_MW, _Files, NameBox.Text), Windows.Threading.DispatcherPriority.Background)
+
+                                   _Disp.Invoke(Sub() LoadNext())
                                End Sub)
         Hold.Start()
     End Sub
 
-    Private Sub LoadFolderChooser()
-        Dim Folders As New WPFGallery(_MW, _Files, NameBox.Text)
-        _MW.PushPage(Folders)
+    Private Sub LoadNext()
+        _MW.PushPage(gallery)
+        gallery.StartLoaders()
     End Sub
 End Class

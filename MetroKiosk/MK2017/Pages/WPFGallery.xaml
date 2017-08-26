@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MetroKiosk"
       mc:Ignorable="d" 
-      d:DesignHeight="944" d:DesignWidth="1280"
-      Title="Select your pictures.">
+      d:DesignHeight="787.089" d:DesignWidth="1702.676"
+      Title="Select your pictures. (Loading)" >
     <Page.Resources>
         <ControlTemplate x:Key="TouchScroller" TargetType="{x:Type ScrollViewer}">
             <Grid x:Name="Grid" Background="{TemplateBinding Background}">
@@ -20,7 +20,7 @@
                 </Grid.RowDefinitions>
                 <Rectangle x:Name="Corner" Grid.Column="1" Fill="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Grid.Row="1"/>
                 <ScrollContentPresenter x:Name="PART_ScrollContentPresenter" CanContentScroll="{TemplateBinding CanContentScroll}" CanHorizontallyScroll="False" CanVerticallyScroll="False" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Grid.Column="0" Margin="{TemplateBinding Padding}" Grid.Row="0"/>
-                <ScrollBar x:Name="PART_VerticalScrollBar" AutomationProperties.AutomationId="VerticalScrollBar" Cursor="Arrow" Grid.Column="1" Maximum="{TemplateBinding ScrollableHeight}" Minimum="0" Grid.Row="0" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportHeight}" Width="50" Background="{x:Null}" BorderBrush="{x:Null}">
+                <ScrollBar x:Name="PART_VerticalScrollBar" AutomationProperties.AutomationId="VerticalScrollBar" Cursor="Arrow" Grid.Column="1" Maximum="{TemplateBinding ScrollableHeight}" Minimum="0" Grid.Row="0" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportHeight}" Width="50" Background="{x:Null}" BorderBrush="{x:Null}" LargeChange="20" SmallChange="20">
                     <ScrollBar.Template>
                         <ControlTemplate TargetType="{x:Type ScrollBar}">
                             <Grid x:Name="Bg" SnapsToDevicePixels="True">
@@ -246,7 +246,36 @@
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
+        <Storyboard x:Key="AnimateIn">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="FooterGrid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="80"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="scrollViewer">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="scrollViewer">
+                <EasingDoubleKeyFrame KeyTime="0" Value="150"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
     </Page.Resources>
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded"/>
+    </Page.Triggers>
     <Page.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FFB0DFFF" Offset="0"/>
@@ -255,39 +284,31 @@
     </Page.Background>
     <Grid>
 
-        <ScrollViewer Margin="0,0,0,80" Template="{DynamicResource TouchScroller}" PanningMode="VerticalOnly" ManipulationBoundaryFeedback="ScrollViewer_ManipulationBoundaryFeedback">
-            <WrapPanel>
-                <local:GalleryControl Width="370" Height="250"/>
-                <local:GalleryControl Width="370" Height="250"/>
-                <local:GalleryControl Width="370" Height="250"/>
-                <local:GalleryControl Width="370" Height="250"/>
-                <local:GalleryControl Width="370" Height="250"/>
-                <local:GalleryControl Width="370" Height="250"/>
-                <local:GalleryControl Width="370" Height="250"/>
-                <local:GalleryControl Width="370" Height="250"/>
-                <local:GalleryControl Width="370" Height="250"/>
-                <local:GalleryControl Width="370" Height="250"/>
-                <local:GalleryControl Width="370" Height="250"/>
-                <local:GalleryControl Width="370" Height="250"/>
-                <local:GalleryControl Width="370" Height="250"/>
-                <local:GalleryControl Width="370" Height="250"/>
-                <local:GalleryControl Width="370" Height="250"/>
-                <local:GalleryControl Width="370" Height="250"/>
-                <local:GalleryControl Width="370" Height="250"/>
-                <local:GalleryControl Width="370" Height="250"/>
-                <local:GalleryControl Width="370" Height="250"/>
-                <local:GalleryControl Width="370" Height="250"/>
-                <local:GalleryControl Width="370" Height="250"/>
-
-
-            </WrapPanel>
+        <ScrollViewer x:Name="scrollViewer" Margin="0,0,0,80" Template="{DynamicResource TouchScroller}" PanningMode="VerticalOnly" ManipulationBoundaryFeedback="ScrollViewer_ManipulationBoundaryFeedback" RenderTransformOrigin="0.5,0.5">
+            <ScrollViewer.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform x:Name="MainTranslation"/>
+                </TransformGroup>
+            </ScrollViewer.RenderTransform>
+            <WrapPanel x:Name="GalleryContainer"/>
         </ScrollViewer>
-        <Grid x:Name="FooterGrid" Height="80" VerticalAlignment="Bottom">
-            <ToggleButton x:Name="_6x4Toggle" Content="6x4 (0)" HorizontalAlignment="Left" Height="55" Margin="44,0,0,0" VerticalAlignment="Bottom" Width="140" Template="{DynamicResource SizeButton}" Background="#FF006A89" BorderBrush="#FF00485D" IsChecked="True"/>
-            <ToggleButton x:Name="_7x5Toggle" Content="7x5 (0)" HorizontalAlignment="Left" Height="55" Margin="184,0,0,0" VerticalAlignment="Bottom" Width="140" Template="{DynamicResource SizeButton}" Background="#FF005789" BorderBrush="#FF003F5D"/>
-            <ToggleButton x:Name="_8x6Toggle" Content="8x6 (0)" HorizontalAlignment="Left" Height="55" Margin="324,0,0,0" VerticalAlignment="Bottom" Width="140" Template="{DynamicResource SizeButton}" Background="#FF004B89" BorderBrush="#FF00375D"/>
-            <ToggleButton x:Name="_8x10Toggle" Content="8x10 (0)" HorizontalAlignment="Left" Height="55" Margin="464,0,0,0" VerticalAlignment="Bottom" Width="140" Template="{DynamicResource SizeButton}" Background="#FF003E89" BorderBrush="#FF002A5D"/>
-            <ToggleButton x:Name="_10x12Toggle" Content="10x12 (0)" HorizontalAlignment="Left" Height="55" Margin="604,0,0,0" VerticalAlignment="Bottom" Width="140" Template="{DynamicResource SizeButton}" Background="#FF003289" BorderBrush="#FF001E5D"/>
+        <Grid x:Name="FooterGrid" Height="80" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform x:Name="FooterTranslation"/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+            <ToggleButton x:Name="_6x4Toggle" Content="6x4 (0)" HorizontalAlignment="Left" Height="55" Margin="44,0,0,0" VerticalAlignment="Bottom" Width="140" Template="{DynamicResource SizeButton}" Background="#FF006A89" BorderBrush="#FF00485D" IsChecked="True" Tag="6x4"/>
+            <ToggleButton x:Name="_7x5Toggle" Content="7x5 (0)" HorizontalAlignment="Left" Height="55" Margin="184,0,0,0" VerticalAlignment="Bottom" Width="140" Template="{DynamicResource SizeButton}" Background="#FF005789" BorderBrush="#FF003F5D" Tag="7x5"/>
+            <ToggleButton x:Name="_8x6Toggle" Content="8x6 (0)" HorizontalAlignment="Left" Height="55" Margin="324,0,0,0" VerticalAlignment="Bottom" Width="140" Template="{DynamicResource SizeButton}" Background="#FF004B89" BorderBrush="#FF00375D" Tag="8x6"/>
+            <ToggleButton x:Name="_8x10Toggle" Content="8x10 (0)" HorizontalAlignment="Left" Height="55" Margin="464,0,0,0" VerticalAlignment="Bottom" Width="140" Template="{DynamicResource SizeButton}" Background="#FF003E89" BorderBrush="#FF002A5D" Tag="8x10"/>
+            <ToggleButton x:Name="_10x12Toggle" Content="10x12 (0)" HorizontalAlignment="Left" Height="55" Margin="604,0,0,0" VerticalAlignment="Bottom" Width="140" Template="{DynamicResource SizeButton}" Background="#FF003289" BorderBrush="#FF001E5D" Tag="10x12"/>
         </Grid>
 
     </Grid>
