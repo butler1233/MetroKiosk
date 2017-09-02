@@ -36,6 +36,9 @@ Partial Class main
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
+        Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.ReceiptPrinter = New System.Drawing.Printing.PrintDocument()
         Me.SuspendLayout()
         '
         'LAUNCH
@@ -146,11 +149,27 @@ Partial Class main
         Me.Button5.Text = "WPF Load: "
         Me.Button5.UseVisualStyleBackColor = True
         '
+        'PrintDocument1
+        '
+        '
+        'Button6
+        '
+        Me.Button6.Location = New System.Drawing.Point(471, 154)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(147, 56)
+        Me.Button6.TabIndex = 13
+        Me.Button6.Text = "Print test page"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
+        'ReceiptPrinter
+        '
+        '
         'main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(630, 305)
+        Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
@@ -183,4 +202,7 @@ Partial Class main
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents Button4 As System.Windows.Forms.Button
     Friend WithEvents Button5 As Button
+    Friend WithEvents PrintDocument1 As Printing.PrintDocument
+    Friend WithEvents Button6 As Button
+    Friend WithEvents ReceiptPrinter As Printing.PrintDocument
 End Class

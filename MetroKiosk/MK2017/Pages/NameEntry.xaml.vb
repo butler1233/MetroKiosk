@@ -58,7 +58,11 @@ Class NameEntry
         MainGrid.IsEnabled = False
         Dim Hold As New Thread(Async Sub()
                                    Thread.Sleep(420)
-                                   Await _Disp.BeginInvoke(Sub() gallery = New WPFGallery(_MW, _Files, NameBox.Text), Windows.Threading.DispatcherPriority.Background)
+                                   Await _Disp.BeginInvoke(Sub()
+                                                               Dim name As String = "No Name"
+                                                               If NameBox.Text.Length > 0 Then name = NameBox.Text
+                                                               gallery = New WPFGallery(_MW, _Files, NameBox.Text)
+                                                           End Sub, Windows.Threading.DispatcherPriority.Background)
 
                                    _Disp.Invoke(Sub() LoadNext())
                                End Sub)

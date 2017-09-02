@@ -10,6 +10,8 @@ Class WPFGallery
     Dim UIElementList As New List(Of GalleryControl)
     Dim _Disp As Dispatcher
     Dim _MW As MetroKioskWPF
+    Dim _OrderName As String
+    Dim ThreadList As New List(Of Thread)
 
     Public Sub New(MainWindow As MetroKioskWPF, Files As List(Of FileInfo), Name As String)
 
@@ -25,7 +27,7 @@ Class WPFGallery
 
         GalleryContainer.Children.Clear()
         For Each File In Files
-            Dim NewControl = New GalleryControl(File, 370, 250)
+            Dim NewControl = New GalleryControl(File, 360, 300, _MW, Me)
             AddHandler NewControl.Adjusted, AddressOf AdjustHandler
             GalleryContainer.Children.Add(NewControl)
             UIElementList.Add(NewControl)
@@ -35,10 +37,36 @@ Class WPFGallery
         SetSelectedSize(MainWindow.SizeID)
         _Disp = Me.Dispatcher
         _MW = MainWindow
+        _OrderName = Name
 
 
     End Sub
 
+
+
+    Dim ImageShowerHiderActive As Boolean = True
+    Private Async Sub ImageShowerHider()
+        While ImageShowerHiderActive
+            If ScrollPositionChanged Then
+                ScrollPositionChanged = False
+
+                For Each UIelement In UIElementList
+                    _Disp.BeginInvoke(Sub()
+                                          Try
+                                              UIelement.UpdateImageVisibility()
+                                          Catch ex As Exception
+
+                                          End Try
+
+                                      End Sub, DispatcherPriority.Normal)
+                Next
+                ScrollPositionChanged = False
+                Thread.Sleep(50)
+            Else
+                Thread.Sleep(50)
+            End If
+        End While
+    End Sub
 
     Private Sub WorkerTasks()
         Thread.Sleep(250 + (New Random().Next(0, 150)))
@@ -46,11 +74,15 @@ Class WPFGallery
         While StillControlsToDo
             Dim NextControl = ControlHunter()
             If Not NextControl Is Nothing Then
-                NextControl.StartLoading()
+                Try
+                    NextControl.StartLoading()
+                Catch ex As Exception
+
+                End Try
             Else
                 StillControlsToDo = False
             End If
-            Thread.Sleep(300)
+            Thread.Sleep(150)
         End While
         _Disp.BeginInvoke(Sub() _MW.FrameTitle.Text = "Select your pictures.")
     End Sub
@@ -87,14 +119,23 @@ Class WPFGallery
                                                         'Set up threads
                                                         Dim Thread1 As New Thread(AddressOf WorkerTasks)
                                                         Dim Thread2 As New Thread(AddressOf WorkerTasks)
-                                                        Dim Thread3 As New Thread(AddressOf WorkerTasks)
+                                                        Thread1.IsBackground = True
+                                                        Thread2.IsBackground = True
+                                                        ThreadList.Add(Thread2)
+                                                        ThreadList.Add(Thread1)
                                                         Thread1.Start()
                                                         Thread2.Start()
-                                                        Thread3.Start()
+
+                                                        Dim ImageShowerThread As New Thread(AddressOf ImageShowerHider)
+                                                        ImageShowerThread.IsBackground = True
+                                                        ThreadList.Add(ImageShowerThread)
+                                                        ImageShowerThread.Start()
                                                     End Sub)
+                              asd.IsBackground = True
+                              ThreadList.Add(asd)
                               asd.Start()
 
-                          End Sub, DispatcherPriority.ContextIdle)
+                          End Sub, DispatcherPriority.Background)
 
 
 
@@ -227,6 +268,76 @@ Class WPFGallery
         End Select
     End Sub
 
+    Private Sub scrollViewer_ScrollChanged(sender As Object, e As Windows.Controls.ScrollChangedEventArgs) Handles scrollViewer.ScrollChanged
+        ScrollPositionChanged = True
+    End Sub
+
+    Dim ScrollPositionChanged As Boolean = False
+
+    Private Sub ScrollUpButton_Click(sender As Object, e As Windows.RoutedEventArgs) Handles ScrollUpButton.Click
+        Try
+            scrollViewer.ScrollToVerticalOffset(scrollViewer.VerticalOffset - ScrollAmt)
+        Catch ex As Exception
+            scrollViewer.ScrollToTop()
+        End Try
+    End Sub
+
+    Dim ScrollAmt As Integer = 300
+
+    Private Sub ScrollDownButton_Click(sender As Object, e As Windows.RoutedEventArgs) Handles ScrollDownButton.Click
+        Try
+            scrollViewer.ScrollToVerticalOffset(scrollViewer.VerticalOffset + ScrollAmt)
+        Catch ex As Exception
+            scrollViewer.ScrollToBottom()
+        End Try
+    End Sub
+
+    Private Sub AdjustAll(amount As Integer)
+        For Each control In UIElementList
+            AdjustOrderedAmount(control.Loadable, CurrentSize, amount)
+            control.SetCounter(GetOrderedAmount(control.Loadable, CurrentSize))
+            GetSizeButton(CurrentSize).Content = GetSizeButton(CurrentSize).Tag + $" ({RecountSizeTotal(CurrentSize)})"
+        Next
+    End Sub
+
+    Private Sub RemoveAllButton_Click(sender As Object, e As Windows.RoutedEventArgs) Handles RemoveAllButton.Click
+        AdjustAll(-1)
+    End Sub
+
+    Private Sub AddAllButton_Click(sender As Object, e As Windows.RoutedEventArgs) Handles AddAllButton.Click
+        AdjustAll(1)
+    End Sub
+
+    Private Sub FinishedButton_Click(sender As Object, e As Windows.RoutedEventArgs) Handles FinishedButton.Click
+        FakeNextPage()
+    End Sub
+
+
+
+    Private Sub FakeNextPage()
+
+        Dim Hold As New Thread(Sub()
+                                   Thread.Sleep(420)
+                                   _Disp.Invoke(Sub() NextPage())
+                               End Sub)
+        Hold.Start()
+    End Sub
+
+    Private Sub NextPage()
+
+        '
+        _MW.ExpandFrame()
+        Dim Process As New ProcessPage(Ordered, _OrderName, _MW)
+        _MW.PushPage(Process)
+
+        For Each item In ThreadList
+            Try
+                item.Abort()
+            Catch ex As Exception
+
+            End Try
+        Next
+    End Sub
 
 #End Region
 

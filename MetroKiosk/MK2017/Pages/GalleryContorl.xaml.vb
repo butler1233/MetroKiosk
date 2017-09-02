@@ -11,6 +11,9 @@ Public Class GalleryControl
     Public Loading As Boolean = False
     Public OnScreen As Boolean = False
 
+    Dim _Mw As MetroKioskWPF
+    Dim _Gp As WPFGallery
+
     Dim ImgWidth As Double
     Dim ImgHeight As Double
 
@@ -37,10 +40,13 @@ Public Class GalleryControl
 
     End Sub
 
-    Public Sub New(File As FileInfo, Width As Int16, Height As Int16)
+    Public Sub New(File As FileInfo, Width As Int16, Height As Int16, MainWindow As MetroKioskWPF, GalleryPage As WPFGallery)
 
         ' This call is required by the designer.
         InitializeComponent()
+
+        _Mw = MainWindow
+        _Gp = GalleryPage
 
         ' Add any initialization after the InitializeComponent() call.
         Loadable = File
@@ -62,10 +68,12 @@ Public Class GalleryControl
         Try
             Disp.BeginInvoke(Sub() LoadingText = "Loading Image")
             Dim Ratio As Double
-            Dim Source = New BitmapImage
-            Dim permasource = Common.MakeImage(ImgWidth, ImgHeight, Source, Loadable, Ratio)
+            permasource = Common.MakeImage(ImgWidth, ImgHeight, Loadable, Ratio)
             Disp.BeginInvoke(Sub()
-                                 ImageHolder.Source = permasource
+                                 If Common.IsUserVisible(Me, _Gp.scrollViewer) Then
+                                     ImageHolder.Source = permasource
+                                 End If
+
 
                              End Sub)
 
@@ -114,6 +122,21 @@ Public Class GalleryControl
         End If
 
         prevValue = Amount
+
+    End Sub
+
+    Public Sub UpdateImageVisibility()
+        If Common.IsUserVisible(Me, _Gp.scrollViewer) Then
+            'We're visible
+            If ImageHolder.Source Is Nothing And Not permasource Is Nothing Then
+                ImageHolder.Source = permasource
+            End If
+        Else
+            'We're not visible
+            If Not ImageHolder.Source Is Nothing Then
+                ImageHolder.Source = Nothing
+            End If
+        End If
 
     End Sub
 End Class

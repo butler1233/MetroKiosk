@@ -185,9 +185,21 @@
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
+        <Storyboard x:Key="ExpandFrameAnim">
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="HostFrame">
+                <EasingThicknessKeyFrame KeyTime="0" Value="0,80,0,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:1" Value="0">
+                    <EasingThicknessKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseInOut"/>
+                    </EasingThicknessKeyFrame.EasingFunction>
+                </EasingThicknessKeyFrame>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
     </Window.Resources>
     <Window.Triggers>
-        <EventTrigger RoutedEvent="FrameworkElement.Loaded"/>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource ExpandFrameAnim}"/>
+        </EventTrigger>
         <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown" SourceName="Starter">
             <BeginStoryboard Storyboard="{StaticResource WelcomeAnimatino}"/>
         </EventTrigger>
@@ -495,7 +507,6 @@
                 </TextBlock>
             </Grid>
         </Border>
-        <Frame x:Name="HostFrame" Content="Frame" Margin="0,80,0,0" Background="White" Opacity="0" Visibility="Collapsed" NavigationUIVisibility="Hidden"/>
         <TextBlock x:Name="FrameTitle" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Foreground="Black" FontSize="48" Opacity="0"/>
         <ToggleButton x:Name="MuteButton" Content="" HorizontalAlignment="Right" Height="80" Margin="0" VerticalAlignment="Top" Width="90" BorderBrush="{x:Null}" IsChecked="True" RenderTransformOrigin="1,0">
             <ToggleButton.RenderTransform>
@@ -534,6 +545,7 @@
                 <ImageBrush ImageSource="/ThePSKiosk;component/Resources/SpeakOff.png" Stretch="UniformToFill"/>
             </ToggleButton.Background>
         </ToggleButton>
+        <Frame x:Name="HostFrame" Content="Frame" Margin="0,80,0,0" Background="White" NavigationUIVisibility="Hidden" Opacity="0" Visibility="Collapsed"/>
 
     </Grid>
 </Window>

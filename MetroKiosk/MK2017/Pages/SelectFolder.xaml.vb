@@ -86,6 +86,7 @@ Class SelectFolder
 
 
     Private Sub NextPage(Folder As DirectoryInfo)
+        _Main.SourceFolder = Folder
         Dim SB As Storyboard = Me.FindResource("LoadingSPiner")
         SB.Begin()
         Loader.Visibility = Windows.Visibility.Visible

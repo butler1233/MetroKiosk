@@ -1,8 +1,11 @@
-﻿Imports System.Windows.Controls
+﻿Imports System.IO
+Imports System.Windows.Controls
+Imports System.Windows.Media.Animation
 
 Public Class MetroKioskWPF
 
     Public SizeID As Sizes = Sizes.s6x4
+    Public SourceFolder As DirectoryInfo
 
     Private Sub Starter_MouseLeftButtonDown(sender As Object, e As Windows.Input.MouseButtonEventArgs) Handles Starter.MouseLeftButtonDown
         'Navigate tjhe frame to the first page. This should get us going.
@@ -25,6 +28,12 @@ Public Class MetroKioskWPF
 
     Dim SpEng As New Speech.Synthesis.SpeechSynthesizer
 
+    Friend Sub ResetKiosk
+        Dim NewKiosk as new MetroKioskWPF()
+        NewKiosk.Show()
+        Me.Close()
+    End Sub
+
     Private Sub Window_Loaded(sender As Object, e As Windows.RoutedEventArgs)
         'Set up the speaker
         SpEng.SetOutputToDefaultAudioDevice()
@@ -39,6 +48,11 @@ Public Class MetroKioskWPF
         End If
 
 
+    End Sub
+
+    Friend Sub ExpandFrame()
+        Dim sb As Storyboard = FindResource("ExpandFrameAnim")
+        sb.Begin()
     End Sub
 
     Private Sub Button_Click(sender As Object, e As Windows.RoutedEventArgs)
