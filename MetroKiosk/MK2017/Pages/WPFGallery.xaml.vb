@@ -231,6 +231,7 @@ Class WPFGallery
         AdjustOrderedAmount(File, CurrentSize, Amount)
         Control.SetCounter(GetOrderedAmount(File, CurrentSize))
         GetSizeButton(CurrentSize).Content = GetSizeButton(CurrentSize).Tag + $" ({RecountSizeTotal(CurrentSize)})"
+        UpdateRunningTotal()
     End Sub
 
     Private Function GetOrderedAmount(File As FileInfo, Size As Sizes) As Integer
@@ -297,6 +298,7 @@ Class WPFGallery
             AdjustOrderedAmount(control.Loadable, CurrentSize, amount)
             control.SetCounter(GetOrderedAmount(control.Loadable, CurrentSize))
             GetSizeButton(CurrentSize).Content = GetSizeButton(CurrentSize).Tag + $" ({RecountSizeTotal(CurrentSize)})"
+            UpdateRunningTotal()
         Next
     End Sub
 
@@ -312,7 +314,51 @@ Class WPFGallery
         FakeNextPage()
     End Sub
 
+    Private Sub UpdateRunningTotal()
+        'PriceBlock and PriceSubBlock
 
+        Dim TotalPrice As Double = 0
+        Dim TotalPrints As Integer = 0
+        Dim CurrentSizes = ""
+        '6x4
+        Dim _6x4Prints as Integer = UIElementList.Sum(Function(asd) GetOrderedAmount(asd.Loadable, Sizes.s6x4))
+        If _6x4Prints>0 Then
+            TotalPrints += _6x4Prints 
+            TotalPrice += GetPricingLevel(Sizes.s6x4, _6x4Prints) * _6x4Prints
+            If CurrentSizes = "" Then CurrentSizes = "6x4" Else CurrentSizes="various sizes"
+        End If
+        '7x5
+        Dim _7x5Prints as Integer = UIElementList.Sum(Function(asd) GetOrderedAmount(asd.Loadable, Sizes.s7x5))
+        If _7x5Prints>0 Then
+            TotalPrints += _7x5Prints 
+            TotalPrice += GetPricingLevel(Sizes.s7x5, _7x5Prints) * _7x5Prints
+            If CurrentSizes = "" Then CurrentSizes = "7x5" Else CurrentSizes="various sizes"
+        End If
+        '8x6
+        Dim _8x6Prints as Integer = UIElementList.Sum(Function(asd) GetOrderedAmount(asd.Loadable, Sizes.s8x6))
+        If _8x6Prints>0 Then
+            TotalPrints += _8x6Prints 
+            TotalPrice += GetPricingLevel(Sizes.s8x6, _8x6Prints) * _8x6Prints
+            If CurrentSizes = "" Then CurrentSizes = "8x6" Else CurrentSizes="various sizes"
+        End If
+        '8x10
+        Dim _8x10Prints as Integer = UIElementList.Sum(Function(asd) GetOrderedAmount(asd.Loadable, Sizes.s8x10))
+        If _8x10Prints>0 Then
+            TotalPrints += _8x10Prints 
+            TotalPrice += GetPricingLevel(Sizes.s8x10, _8x10Prints) * _8x10Prints
+            If CurrentSizes = "" Then CurrentSizes = "8x10" Else CurrentSizes="various sizes"
+        End If
+        '10x12
+        Dim _10x12Prints as Integer = UIElementList.Sum(Function(asd) GetOrderedAmount(asd.Loadable, Sizes.s10x12))
+        If _10x12Prints>0 Then
+            TotalPrints += _10x12Prints 
+            TotalPrice += GetPricingLevel(Sizes.s10x12, _10x12Prints) * _10x12Prints
+            If CurrentSizes = "" Then CurrentSizes = "10x12" Else CurrentSizes="various sizes"
+        End If
+
+        PriceBlock_Copy.Text = FormatCurrency(TotalPrice,2)
+        PriceSubBlock.Text = TotalPrints.ToString + " prints, " + CurrentSizes
+    End Sub
 
     Private Sub FakeNextPage()
 

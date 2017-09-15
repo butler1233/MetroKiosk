@@ -34,6 +34,7 @@ Class SizeSelector
             Dim Folders As New SelectFolder(_Main, _Files, _Disktype, _RootFolder)
             _Main.PushPage(Folders)
         Else
+            _Main.SourceFolder = Folder
             Dim Folders As New NameEntry(_Main, _Files)
             _Main.PushPage(Folders)
         End If

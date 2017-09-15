@@ -18,10 +18,10 @@
     <OptionCompare>Binary</OptionCompare>
     <OptionStrict>Off</OptionStrict>
     <OptionInfer>On</OptionInfer>
-    <ManifestCertificateThumbprint>472CD2CB2277613D5CB8E12C4D293977015A273D</ManifestCertificateThumbprint>
-    <ManifestKeyFile>MetroKiosk_2_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestCertificateThumbprint>57604320C5664CB7BC701E5D05D8C854DFB437EE</ManifestCertificateThumbprint>
+    <ManifestKeyFile>ThePhotoShopKiosk.pfx</ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
-    <SignManifests>false</SignManifests>
+    <SignManifests>true</SignManifests>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -47,8 +47,8 @@
     <SuiteName>MetroKiosk System</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
-    <ApplicationRevision>11</ApplicationRevision>
-    <ApplicationVersion>2.2017.6.%2a</ApplicationVersion>
+    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationVersion>2.2017.9.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -59,7 +59,7 @@
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <OutputPath>\\ITS-STILL-HAPPE\rdbg\MetroKiosk\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>ThePSKiosk.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
     <Prefer32Bit>false</Prefer32Bit>
@@ -82,7 +82,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>MetroKiosk_2_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>ThePhotoShopKiosk.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
@@ -147,6 +147,9 @@
       <DependentUpon>MetroKioskWPF.xaml</DependentUpon>
     </Compile>
     <Compile Include="MK2017\OrderedSizes.vb" />
+    <Compile Include="MK2017\Pages\BluetoothLanding.xaml.vb">
+      <DependentUpon>BluetoothLanding.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MK2017\Pages\Completed.xaml.vb">
       <DependentUpon>Completed.xaml</DependentUpon>
     </Compile>
@@ -370,8 +373,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="MetroKiosk_1_TemporaryKey.pfx" />
-    <None Include="MetroKiosk_2_TemporaryKey.pfx" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -382,6 +383,7 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <None Include="ThePhotoShopKiosk.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Kiosklogo.png" />
@@ -396,7 +398,6 @@
     <Resource Include="Resources\ethernet_on-32.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="MetroKiosk_TemporaryKey.pfx" />
     <Resource Include="Resources\print-32.png" />
   </ItemGroup>
   <ItemGroup>
@@ -513,7 +514,7 @@
     <Resource Include="Resources\rotright.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\ImageProcessor-develop\src\ImageProcessor\ImageProcessor.csproj">
+    <ProjectReference Include="..\..\ImageProcessor\src\ImageProcessor\ImageProcessor.csproj">
       <Project>{3b5dd734-fb7a-487d-8ce6-55e7af9aea7e}</Project>
       <Name>ImageProcessor</Name>
     </ProjectReference>
@@ -564,6 +565,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MK2017\MetroKioskWPF.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MK2017\Pages\BluetoothLanding.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -650,6 +655,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="MK2017\Pages\Backspacewhite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MK2017\Pages\BTico.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

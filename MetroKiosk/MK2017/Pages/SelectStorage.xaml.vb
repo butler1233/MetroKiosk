@@ -99,19 +99,20 @@ Class SelectStorage
         End While
         'We found the details so we can spit it out.
         Dim DriveName As String = (New DriveInfo(DiskFolder.Substring(0, 1)).VolumeLabel)
+        If DriveName="" Then DriveName = "Unnamed device"
         _Disp.Invoke(Sub() TriggerTransition(DriveName, DiskType))
 
-        'And now, we enumerate
-        Dim DirInfo As New DirectoryInfo(DiskFolder)
+        _Disp.Invoke(Sub() BluetoothButton.Visibility=Windows.Visibility.Collapsed)
 
-        files.AddRange(DirInfo.EnumerateFiles("*.jpg", SearchOption.AllDirectories))
-        files.AddRange(DirInfo.EnumerateFiles("*.bmp", SearchOption.AllDirectories))
-        files.AddRange(DirInfo.EnumerateFiles("*.png", SearchOption.AllDirectories))
-        files.AddRange(DirInfo.EnumerateFiles("*.tif", SearchOption.AllDirectories))
-        files.AddRange(DirInfo.EnumerateFiles("*.jpeg", SearchOption.AllDirectories))
+        'And now, we enumerate
+        Try
+            BasicEnum(files,DiskFolder)
+        Catch ex As Exception
+            StrongAndStableEnum(files,DiskFolder)
+        End Try
 
         'Sort by filename
-        files.Sort(Function(x, y) x.LastWriteTime.CompareTo(y.LastWriteTime))
+        files.Sort(Function(x, y) y.LastWriteTime.CompareTo(x.LastWriteTime))
         'We should be okay to report the total now.
 
         _Disp.Invoke(Sub() ReadyToNext(files.Count.ToString))
@@ -129,5 +130,48 @@ Class SelectStorage
     Private Sub LoadFolderChooser()
         Dim Folders As New SizeSelector(_Main, files, DiskType, DiskFolder)
         _Main.PushPage(Folders)
+    End Sub
+
+    Private Sub BasicEnum(ByRef files As List(Of FileInfo), Folder As string)
+        Dim DirInfo As New DirectoryInfo(Folder)
+
+        files.AddRange(DirInfo.EnumerateFiles("*.jpg", SearchOption.AllDirectories))
+        files.AddRange(DirInfo.EnumerateFiles("*.bmp", SearchOption.AllDirectories))
+        files.AddRange(DirInfo.EnumerateFiles("*.png", SearchOption.AllDirectories))
+        files.AddRange(DirInfo.EnumerateFiles("*.tif", SearchOption.AllDirectories))
+        files.AddRange(DirInfo.EnumerateFiles("*.jpeg", SearchOption.AllDirectories))
+    End Sub
+
+    Private Sub StrongAndStableEnum(ByRef files As List(Of FileInfo), Folder As string)
+        Dim Root As New DirectoryInfo(Folder)
+        files = SlowEnum(Root)
+    End Sub
+
+    Private Function SlowEnum(folder As DirectoryInfo) As List(Of FileInfo)
+        'First try to add the files
+        Dim Files As New List(Of FileInfo)
+        Try
+            Files.AddRange(folder.EnumerateFiles("*.jpg",SearchOption.TopDirectoryOnly))
+            Files.AddRange(folder.EnumerateFiles("*.bmp",SearchOption.TopDirectoryOnly))
+            Files.AddRange(folder.EnumerateFiles("*.png",SearchOption.TopDirectoryOnly))
+            Files.AddRange(folder.EnumerateFiles("*.tif",SearchOption.TopDirectoryOnly))
+            Files.AddRange(folder.EnumerateFiles("*.jpeg",SearchOption.TopDirectoryOnly))
+        Catch ex As Exception
+
+        End Try
+        'Now we enumerate the folders
+        For each forfolder In folder.EnumerateDirectories()
+            Try
+                Files.AddRange(SlowEnum(forfolder))
+            Catch ex As Exception
+
+            End Try
+        Next
+        Return Files
+        
+    End Function
+
+    Private Sub BluetoothButton_Click(sender As Object, e As Windows.RoutedEventArgs) Handles BluetoothButton.Click
+        _Main.PushPage(New BluetoothLanding(_Main))
     End Sub
 End Class

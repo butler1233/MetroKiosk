@@ -1,12 +1,13 @@
-﻿Imports System.Threading
+﻿Imports System.IO
+Imports System.Threading
 Imports System.Windows.Threading
 
 Class Completed
 
-    Dim Disp as Dispatcher
-    Dim Main as MetroKioskWPF
+    Dim Disp As Dispatcher
+    Dim Main As MetroKioskWPF
 
-    Public sub New(MainWindow As MetroKioskWPF  )
+    Public Sub New(MainWindow As MetroKioskWPF)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -15,9 +16,17 @@ Class Completed
         Disp = Me.Dispatcher
         Main = MainWindow
 
-        Dim Magic As new Thread(Sub()
-                                    Thread.Sleep(20)
-                                    Disp.BeginInvoke(sub() Main.ResetKiosk)
+        Dim Magic As New Thread(Sub()
+                                    Dim files = (New DirectoryInfo("C:\bt").EnumerateFiles())
+                                    For each file In files
+                                        Try
+                                            file.Delete
+                                        Catch ex As Exception
+                                            'rip
+                                        End Try
+                                    Next
+                                    Thread.Sleep(15000)
+                                    Disp.BeginInvoke(Sub() Main.ResetKiosk)
                                 End Sub)
         Magic.Start()
     End Sub
