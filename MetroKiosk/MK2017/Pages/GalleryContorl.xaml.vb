@@ -2,6 +2,7 @@
 Imports System.Windows.Media.Animation
 Imports System.Windows.Media.Imaging
 Imports System.Windows.Threading
+Imports ImageProcessor
 
 Public Class GalleryControl
 
@@ -58,28 +59,27 @@ Public Class GalleryControl
         Me.Height = Height
     End Sub
 
-    Dim permasource As BitmapImage = Nothing
+    Dim permasource As BitmapSource = Nothing
 
     ''' <summary>
     ''' Must be started from an non-UI thread.
     ''' </summary>
-    Public Sub StartLoading()
+    Public Sub StartLoading(Optional Factory As ImageFactory = nothing)
         Loading = True
         Try
-            Disp.BeginInvoke(Sub() LoadingText = "Loading Image")
+            Disp.BeginInvoke(Sub() LoadingText = "Loading Image", DispatcherPriority.Background)
             Dim Ratio As Double
-            permasource = Common.MakeImage(ImgWidth, ImgHeight, Loadable, Ratio)
-            Disp.BeginInvoke(Sub()
-                                 If Common.IsUserVisible(Me, _Gp.scrollViewer) Then
-                                     ImageHolder.Source = permasource
-                                 End If
-
-
-                             End Sub)
-
-            Disp.BeginInvoke(Sub() hideLoadText())
+            permasource = Common.MakeImage(ImgWidth, ImgHeight, Loadable, Ratio, Factory)
+            Disp.Invoke(Sub()
+                If Common.IsUserVisible(Me, _Gp.scrollViewer) Then
+                    ImageHolder.Source = permasource
+                End If
+                hideLoadText()
+                             End Sub, DispatcherPriority.ContextIdle)
         Catch ex As Exception
-            Disp.BeginInvoke(Sub() LoadingText = "Load Failed")
+            Disp.Invoke(Sub()
+                LoadingText = "Load Failed"
+                             End Sub)
 
         End Try
         Imageloaded = True
@@ -125,17 +125,25 @@ Public Class GalleryControl
 
     End Sub
 
+    Public Sub HideImage
+        If Not ImageHolder.Source is nothing
+            ImageHolder.Source = Nothing
+        End If
+    End Sub
+
+    Public Sub ShowImage
+        If ImageHolder.Source Is Nothing And Not permasource Is Nothing Then
+            ImageHolder.Source = permasource
+        End If
+    End Sub
+
     Public Sub UpdateImageVisibility()
         If Common.IsUserVisible(Me, _Gp.scrollViewer) Then
             'We're visible
-            If ImageHolder.Source Is Nothing And Not permasource Is Nothing Then
-                ImageHolder.Source = permasource
-            End If
+            ShowImage()
         Else
             'We're not visible
-            If Not ImageHolder.Source Is Nothing Then
-                ImageHolder.Source = Nothing
-            End If
+            HideImage()
         End If
 
     End Sub

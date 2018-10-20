@@ -4,6 +4,7 @@ Imports System.Threading
 Imports System.Text
 Imports System.IO
 Imports System.Drawing.Printing
+Imports SHDocVw
 
 Public Class main
 
@@ -68,7 +69,7 @@ Public Class main
     End Sub
 
     Private Sub Worker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles Worker.DoWork
-        createListener()
+        'createListener()
 
     End Sub
 
@@ -121,6 +122,8 @@ Public Class main
 
     End Function
     Private Sub main_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+        FixDestinationFolder()
 
         If My.Settings.Use2K17 Then
             '_2017_Welcome.Show()
@@ -400,5 +403,22 @@ Public Class main
 
         e.Graphics.DrawString(FooterText,Footer,Brushes.Black,FooterRect,CentererT)
 
+    End Sub
+
+    Public Sub FixDestinationFolder
+        Dim info = new ProcessStartInfo("explorer.exe", my.Settings.StorageTarget)
+        info.WindowStyle = ProcessWindowStyle.Hidden
+        Dim process = new Diagnostics.Process
+        process.StartInfo = info
+        process.Start
+        Thread.Sleep(1000)
+        Dim shellWindows = new SHDocVw.ShellWindows()
+        Dim processType as String
+        For each ie as InternetExplorer In shellWindows
+            processType = System.IO.Path.GetFileNameWithoutExtension(ie.FullName).ToLower()
+            if processType.Equals("explorer") And ie.LocationURL.Contains(my.Settings.StorageTarget)
+                ie.Quit()
+            End If
+        Next
     End Sub
 End Class

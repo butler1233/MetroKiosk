@@ -1,8 +1,10 @@
-﻿Imports System.IO
+﻿Imports System.Collections.Concurrent
+Imports System.IO
 Imports System.Threading
 Imports System.Windows.Controls.Primitives
 Imports System.Windows.Media.Animation
 Imports System.Windows.Threading
+Imports ImageProcessor
 
 Class WPFGallery
 
@@ -17,6 +19,8 @@ Class WPFGallery
 
         ' This call is required by the designer.
         InitializeComponent()
+
+        VisibilityUpdateDelay = New Thread(AddressOf VisibilityUpdateDelayer)
 
         scrollViewer.Opacity = 0
         MainTranslation.X = 150
@@ -39,52 +43,141 @@ Class WPFGallery
         _MW = MainWindow
         _OrderName = Name
 
-
+        TotalControls = Files.Count
+        
     End Sub
 
+    #Region "2018 update"
+    'Improved 2018 bits
+    Dim ToggleVisibleQueue as new Queue(Of GalleryControl)
+    Dim ToggleInvisibleQueue as new Queue(of GalleryControl)
 
+    Dim QueuesUpdating as Boolean = True    'Starts true so the workers don't immediately give up.
+    Dim LoadVisibleQueue as new ConcurrentQueue(Of GalleryControl)
+    Dim LoadInvisibleQueue as new ConcurrentQueue(Of GalleryControl)
 
-    Dim ImageShowerHiderActive As Boolean = True
-    Private Async Sub ImageShowerHider()
-        While ImageShowerHiderActive
-            If ScrollPositionChanged Then
-                ScrollPositionChanged = False
+    Dim LastVisibilityUpdateTime as DateTime
+    Dim NextVisibilityUpdateTime as DateTime
 
-                For Each UIelement In UIElementList
-                    _Disp.BeginInvoke(Sub()
-                                          Try
-                                              UIelement.UpdateImageVisibility()
-                                          Catch ex As Exception
+    Dim VisibilityUpdateDelay as Thread
 
-                                          End Try
+    Private Sub DelayVisibilityUpdate
+        NextVisibilityUpdateTime = now.AddMilliseconds(100)
+        if VisibilityUpdateDelay.IsAlive
+            Exit sub
+        End If
+        VisibilityUpdateDelay = new Thread(AddressOf VisibilityUpdateDelayer)
+        VisibilityUpdateDelay.Start
+    End Sub
 
-                                      End Sub, DispatcherPriority.Normal)
-                Next
-                ScrollPositionChanged = False
-                Thread.Sleep(50)
-            Else
-                Thread.Sleep(50)
-            End If
+    Private Sub VisibilityUpdateDelayer
+        While now < NextVisibilityUpdateTime
+            Thread.Sleep(50)
+            Console.WriteLine("Waiting to update visibilities")
         End While
+        _Disp.Invoke(AddressOf UpdateVisible)
     End Sub
+
+    Private Sub UpdateVisible()
+        'if (Now - LastVisibilityUpdateTime).TotalSeconds < 0.2
+        '    Exit Sub
+        'End If
+        'LastVisibilityUpdateTime = now
+        QueuesUpdating = true
+        LoadVisibleQueue = New ConcurrentQueue(Of GalleryControl)()
+        LoadInvisibleQueue = New ConcurrentQueue(Of GalleryControl)()
+        ToggleVisibleQueue.Clear
+        ToggleInvisibleQueue.Clear()
+        'Unfortunately involves iterating through everything.
+        For each Control As GalleryControl in GalleryContainer.Children
+            if IsUserVisible(Control,Me)
+                ToggleVisibleQueue.Enqueue(Control)
+                LoadVisibleQueue.Enqueue(Control)
+            Else 
+                ToggleInvisibleQueue.Enqueue(Control)
+                LoadInvisibleQueue.Enqueue(Control)
+            End If
+        Next
+        Console.WriteLine($"Toggling {ToggleVisibleQueue.Count } visible, {ToggleInvisibleQueue.Count} invisible")
+        ToggleImageVisibility()
+        QueuesUpdating = false
+    End Sub
+
+    Private Sub ToggleImageVisibility
+        'Process the visible ones first as they're most important
+        While ToggleVisibleQueue.Count > 0
+            Dim item = ToggleVisibleQueue.Dequeue()
+            item.ShowImage()
+        End While
+        
+        'Then the rest we can do in the background a bit
+        Dim InvisibleToggler = New Thread(
+            sub()
+                While ToggleInVisibleQueue.Count > 0
+                    Dim item = ToggleInVisibleQueue.Dequeue()
+                    _Disp.Invoke(
+                        Sub()
+                            try
+                                item.HideImage()
+                            Catch ex As Exception
+
+                            End Try
+                            
+                        End Sub)
+                End While
+            End Sub)
+        InvisibleToggler.Start()
+    End Sub
+
+    #End region
+
+    Dim TotalLoaded = 0
+    Dim TotalControls = 0
 
     Private Sub WorkerTasks()
-        Thread.Sleep(250 + (New Random().Next(0, 150)))
+        Dim ProcessingFactory As New ImageFactory()
+        Thread.Sleep(100 + (New Random().Next(0, 150)))
         Dim StillControlsToDo As Boolean = True
         While StillControlsToDo
-            Dim NextControl = ControlHunter()
-            If Not NextControl Is Nothing Then
-                Try
-                    NextControl.StartLoading()
-                Catch ex As Exception
-
-                End Try
-            Else
-                StillControlsToDo = False
+            If LoadVisibleQueue.Count > 0
+                Dim item as GalleryControl
+                if LoadVisibleQueue.TryDequeue(item)
+                    if not Item.Imageloaded
+                        item.StartLoading(ProcessingFactory)
+                        TotalLoaded += 1
+                    End If
+                    
+                End If
+            ElseIf LoadInvisibleQueue.Count > 0
+                Dim item as GalleryControl
+                if LoadInvisibleQueue.TryDequeue(item)
+                    if not Item.Imageloaded
+                        item.StartLoading(ProcessingFactory)
+                        TotalLoaded += 1
+                    End If
+                End If
+            ElseIf QueuesUpdating = true
+                'Do nothing
+                Thread.Sleep(50)
+            Else 
+                StillControlsToDo = false
             End If
-            Thread.Sleep(150)
+            _Disp.Invoke(Sub() _MW.FrameTitle.Text = $"Select your pictures. ({TotalLoaded} of {TotalControls} loaded)")
+            'Dim NextControl = ControlHunter()
+            'If Not NextControl Is Nothing Then
+            '    Try
+            '        NextControl.StartLoading()
+            '        _Disp.Invoke(function() 
+            '                         NextControl.UpdateImageVisibility()
+            '                     End function)
+            '    Catch ex As Exception
+
+            '    End Try
+            'Else
+            '    StillControlsToDo = False
+            'End If
         End While
-        _Disp.BeginInvoke(Sub() _MW.FrameTitle.Text = "Select your pictures.")
+        _Disp.Invoke(Sub() _MW.FrameTitle.Text = "Select your pictures.")
     End Sub
 
     Private Function ControlHunter() As GalleryControl
@@ -110,27 +203,28 @@ Class WPFGallery
     End Sub
 
     Public Sub StartLoaders()
-        _Disp.BeginInvoke(Sub()
+        _Disp.Invoke(Sub()
                               'Animate the page in
                               Dim SB2 As Storyboard = Me.FindResource("AnimateIn")
                               SB2.Begin()
 
-                              Dim asd As New Thread(Sub()
-                                                        'Set up threads
-                                                        Dim Thread1 As New Thread(AddressOf WorkerTasks)
-                                                        Dim Thread2 As New Thread(AddressOf WorkerTasks)
-                                                        Thread1.IsBackground = True
-                                                        Thread2.IsBackground = True
-                                                        ThreadList.Add(Thread2)
-                                                        ThreadList.Add(Thread1)
-                                                        Thread1.Start()
-                                                        Thread2.Start()
-
-                                                        Dim ImageShowerThread As New Thread(AddressOf ImageShowerHider)
-                                                        ImageShowerThread.IsBackground = True
-                                                        ThreadList.Add(ImageShowerThread)
-                                                        ImageShowerThread.Start()
-                                                    End Sub)
+                              Dim asd As New Thread(
+                                  Sub()
+                                      'Set up threads
+                                      Dim Thread1 As New Thread(AddressOf WorkerTasks)
+                                      Dim Thread2 As New Thread(AddressOf WorkerTasks)
+                                      Dim Thread3 As New Thread(AddressOf WorkerTasks)
+                                      Thread1.IsBackground = True
+                                      Thread2.IsBackground = True
+                                      Thread3.IsBackground = True
+                                      ThreadList.Add(Thread2)
+                                      ThreadList.Add(Thread1)
+                                      ThreadList.Add(Thread3)
+                                      Thread1.Start()
+                                      Thread2.Start()
+                                      Thread3.Start()
+                                    
+                                  End Sub)
                               asd.IsBackground = True
                               ThreadList.Add(asd)
                               asd.Start()
@@ -270,7 +364,9 @@ Class WPFGallery
     End Sub
 
     Private Sub scrollViewer_ScrollChanged(sender As Object, e As Windows.Controls.ScrollChangedEventArgs) Handles scrollViewer.ScrollChanged
-        ScrollPositionChanged = True
+        'ScrollPositionChanged = True
+        'UpdateVisible()
+        DelayVisibilityUpdate()
     End Sub
 
     Dim ScrollPositionChanged As Boolean = False

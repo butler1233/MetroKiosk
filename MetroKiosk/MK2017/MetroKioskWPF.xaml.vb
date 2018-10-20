@@ -59,4 +59,9 @@ Public Class MetroKioskWPF
         Dim bi As New BluetoothIntegration
         bi.Show()
     End Sub
+
+    Private Sub ConfirmQuit_Click(sender As Object, e As Windows.RoutedEventArgs) Handles ConfirmQuit.Click
+        System.Windows.Forms.Application.Restart
+        End
+    End Sub
 End Class

@@ -169,25 +169,7 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Grid.RenderTransform>
-
-            <ProgressBar Height="50" VerticalAlignment="Bottom" Margin="0" IsIndeterminate="True" BorderBrush="{x:Null}" Background="{x:Null}" BorderThickness="0,1">
-                <ProgressBar.Foreground>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <LinearGradientBrush.RelativeTransform>
-                            <TransformGroup>
-                                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                                <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                                <RotateTransform Angle="-90" CenterY="0.5" CenterX="0.5"/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </LinearGradientBrush.RelativeTransform>
-                        <GradientStop Color="#00005DFF" Offset="0"/>
-                        <GradientStop Color="#FF005DFF" Offset="0.5"/>
-                        <GradientStop Color="#FE005DFF" Offset="1"/>
-                    </LinearGradientBrush>
-                </ProgressBar.Foreground>
-            </ProgressBar>
-            <TextBlock x:Name="LoadingTextBlock" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Please wait" VerticalAlignment="Bottom" Foreground="#CCFFFFFF" Margin="0,0,0,54" FontSize="36"/>
+            <TextBlock x:Name="LoadingTextBlock" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Please wait" VerticalAlignment="Bottom" Foreground="#CCFFFFFF" Margin="0,0,0,34" FontSize="36"/>
         </Grid>
         <TextBlock x:Name="Filename" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Foreground="White" Background="#7F000000" Padding="5,5,7,5" FontSize="14"/>
         <Grid x:Name="OrderControls" Height="80" VerticalAlignment="Bottom" Opacity="0" Margin="0,0,0,-30">
